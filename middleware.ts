@@ -10,4 +10,10 @@ export default authMiddleware({
 
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  api: {
+    bodyParser: {
+      sizeLimit: "4mb",
+    },
+    responseLimit: "4mb",
+  },
 };
