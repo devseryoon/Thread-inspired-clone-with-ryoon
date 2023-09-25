@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.body {
+  background-color: rgb(16, 16, 16);
+}
+.main-container {
+ background-color: rgb(16, 16, 16);
+}
+
 @layer components {
   /* main */
   .main-container {
-    @apply flex min-h-screen flex-1 flex-col items-center bg-dark-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
+    @apply flex min-h-screen flex-1 flex-col items-center  px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
   }
 
   /* Head Text */
@@ -20,7 +27,7 @@
 
   /* No Result */
   .no-result {
-    @apply text-center !text-base-regular text-light-3;
+    @apply text-center !text-base-regular ;
   }
 
   /* Community Card */
@@ -29,7 +36,7 @@
   }
 
   .community-card_btn {
-    @apply rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important;
+    @apply rounded-lg bg-neutral-600  px-5 py-1.5 text-small-regular !text-light-1 !important;
   }
 
   /* thread card  */
@@ -47,7 +54,7 @@
   }
 
   .user-card_btn {
-    @apply h-auto min-w-[74px] rounded-lg bg-primary-500 text-[12px] text-light-1 !important;
+    @apply h-auto min-w-[74px] rounded-lg bg-neutral-600  text-[12px] text-light-1 !important;
   }
 
   .searchbar {
@@ -55,19 +62,22 @@
   }
 
   .searchbar_input {
-    @apply border-none bg-dark-3 text-base-regular text-light-4 outline-none !important;
+    @apply border-none bg-dark-3 text-base-regular text-neutral-200 outline-none !important;
   }
 
   .topbar {
-    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-dark-2 px-6 py-3;
+    @apply fixed top-0 z-30 flex w-full items-center justify-center px-6 py-3;
+  }
+  .topbar{
+    background-color: rgb(16, 16, 16);
   }
 
   .bottombar {
-    @apply fixed bottom-0 z-10 w-full rounded-t-3xl bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 md:hidden;
+    @apply fixed bottom-0 z-10 w-full rounded-t-3xl bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 flex justify-center
   }
 
   .bottombar_container {
-    @apply flex items-center justify-between gap-3 xs:gap-5;
+    @apply flex items-center w-full max-w-4xl justify-between gap-3 xs:gap-5 
   }
 
   .bottombar_link {
@@ -75,7 +85,7 @@
   }
 
   .leftsidebar {
-    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4 bg-dark-2 pb-5 pt-28 max-md:hidden;
+    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4  pb-5 pt-16 max-md:hidden;
   }
 
   .leftsidebar_link {
@@ -107,15 +117,19 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #5c5c7b;
+    --tw-bg-opacity: 1;
+    background-color: rgb(82 82 82 / var(--tw-bg-opacity));
     border-radius: 50px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #7878a3;
+    --tw-bg-opacity: 1;
+    background-color: rgb(163 163 163 / var(--tw-bg-opacity));
   }
 }
-
+.threadsLogo {
+  color: transparent;
+}
 /* Clerk Responsive fix */
 .cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
   @apply max-sm:hidden;
@@ -127,6 +141,23 @@
   @apply max-sm:hidden;
 }
 
+.left_click {
+  background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
+}
+
+
+.left_action:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
+}
+
+.bottom_click {
+  background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
+}
+
+
+.bottom_action:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
+}
 /* Shadcn Component Styles */
 
 /* Tab */
@@ -157,5 +188,5 @@
 }
 
 .comment-form_btn {
-  @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+  @apply rounded-3xl bg-neutral-600 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
 }

@@ -36,7 +36,10 @@ async function Page({
         </div>
         <div className="mt-9 flex flex-col gap-4">
           {result.communities.length === 0 ? (
-            <p className="no-result"> No Result</p>
+            <p style={{ color: "rgb(119, 119, 119)" }} className="no-result">
+              {" "}
+              No Result
+            </p>
           ) : (
             <>
               {result.communities.map((comm) => {

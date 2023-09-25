@@ -41,7 +41,7 @@ const ThreadCard = ({
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
+        isComment ? "px-0 xs:px-7 pb-4" : "bg-dark-2 p-7"
       }`}
     >
       <div className="flex flex-items-start justify-between">
@@ -64,11 +64,13 @@ const ThreadCard = ({
                 {author.name}
               </h4>
             </Link>
-            <p className="mt-2 text-small-regular text-light-2">{content}</p>
+            <p className="mt-2 text-small-regular text-light-2 mb-2">
+              {content}
+            </p>
             <div className={`${isComment && "mb-10"}mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
                 <Image
-                  src="/assets/heart-gray.svg"
+                  src="/assets/new/dark/heart-gray.svg"
                   alt="heart"
                   width={24}
                   height={24}
@@ -76,7 +78,7 @@ const ThreadCard = ({
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
-                    src="/assets/reply.svg"
+                    src="/assets/new/dark/reply.svg"
                     alt="heart"
                     width={24}
                     height={24}
@@ -84,14 +86,14 @@ const ThreadCard = ({
                   />
                 </Link>
                 <Image
-                  src="/assets/repost.svg"
+                  src="/assets/new/dark/repost.svg"
                   alt="heart"
                   width={24}
                   height={24}
                   className="cursor-pointer object-contain"
                 />
                 <Image
-                  src="/assets/share.svg"
+                  src="/assets/new/dark/share.svg"
                   alt="heart"
                   width={24}
                   height={24}

@@ -19,17 +19,22 @@ const BottomBar = () => {
             <Link
               href={link.route}
               key={link.label}
-              className={`bottombar_link ${isActive && "bg-primary-500"}`}
+              className={`bottombar_link ${
+                isActive && "bottom_click"
+              } bottom_action`}
             >
               <Image
-                src={link.imgURL}
+                src={isActive ? link.imgURL.white : link.imgURL.dark}
                 alt={link.label}
                 width={16}
                 height={16}
                 className="object-contain"
               />
 
-              <p className="text-subtle-medium text-light-1 max-sm:hidden">
+              <p
+                style={{ color: isActive ? "#EFEFEF" : "rgb(119, 119, 119)" }}
+                className="text-subtle-medium  max-sm:hidden"
+              >
                 {link.label.split(/\s+/)[0]}
               </p>
             </Link>

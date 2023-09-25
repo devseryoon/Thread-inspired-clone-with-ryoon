@@ -49,7 +49,13 @@ async function page() {
             })}
           </>
         ) : (
-          <p className="!text-base-regular text-light-3"> no activity yet</p>
+          <p
+            style={{ color: "rgb(119, 119, 119)" }}
+            className="!text-base-regular"
+          >
+            {" "}
+            no activity yet
+          </p>
         )}
       </section>
     </section>
