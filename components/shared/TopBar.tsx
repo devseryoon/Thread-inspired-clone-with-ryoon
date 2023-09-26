@@ -1,35 +1,35 @@
 "use client";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import logo from "../../public/assets/light-logo.svg";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { usePathname, useRouter } from "next/navigation";
-import { AlignRight } from "lucide-react";
+import logoWhite from "../../public/assets/light-logo.svg";
+import logDark from "../../public/assets/dark-logo.svg";
 import TopDropDownMenu from "./TopDropDownMenu";
+import { useTheme } from "next-themes";
 
 const TopBar = () => {
   const router = useRouter();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <nav className="topbar">
       <Link href="/" className="flex items-center gap-4">
         <div className="flex items-center justify-center w-full ">
           <div className="h-8 w-8 ">
-            <Image src={logo} alt="Threads logo" />
+            <Image
+              src={theme === "dark" ? logoWhite : logDark}
+              alt="Threads logo"
+            />
           </div>
         </div>
-        <p className="text-heading3-bold text-light-1 max-xs:hidden ml-0">
+        <p
+          className={`text-heading3-bold max-xs:hidden ml-0 ${
+            theme === "dark" ? "text-light-1" : "text-black"
+          }`}
+        >
           Threads
         </p>
         <p className=" m-0  text-x-small-semibold text-neutral-600 ">(clone)</p>
@@ -49,7 +49,11 @@ const TopBar = () => {
             </SignedOut>
           </SignedIn>
         </div>
-        <div className="toggleDarkmode">
+        <div
+          className={`toggleDarkmode ${
+            theme === "dark" ? "text-white " : "text-black"
+          }`}
+        >
           <TopDropDownMenu />
         </div>
 

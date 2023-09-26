@@ -51,7 +51,6 @@ const ThreadCard = ({
               <Image
                 src={author.image}
                 alt="profile_pic"
-                // style={{ height: "2.75rem", width: "2.75rem" }}
                 fill
                 className="cursor-pointer rounded-full"
               />
@@ -60,11 +59,11 @@ const ThreadCard = ({
           </div>
           <div className="flex w-full flex-col">
             <Link href={`/profile/${author.id}`} className="w-fit">
-              <h4 className="cursor-pointer text-base-semibold text-light-1">
+              <h4 className="cursor-pointer text-base-semibold  text-inherit  ">
                 {author.name}
               </h4>
             </Link>
-            <p className="mt-2 text-small-regular text-light-2 mb-2">
+            <p className="mt-2 text-small-regular text-inherit mb-2">
               {content}
             </p>
             <div className={`${isComment && "mb-10"}mt-5 flex flex-col gap-3`}>

@@ -6,11 +6,13 @@
   /* Your default theme */
   --background: white;
   --foreground: black;
+  color:rgb(0, 0, 0);
 }
 
 [data-theme='dark'] {
   --background: rgb(16, 16, 16);
   --foreground: white;
+  color:white;
 }
 
 /* 
@@ -66,6 +68,12 @@
   background-color: rgb(16, 16, 16);
 }
 
+.forDarkMenuBg{
+  background-color:rgba(36, 35, 35, 0.942);
+}
+.forwhiteMenuBg{
+  background-color:rgb(119, 119, 119);
+}
 .body {
   /* background-color: rgb(16, 16, 16); */
 }
@@ -133,7 +141,7 @@
     @apply fixed top-0 z-30 flex w-full items-center justify-center px-6 py-3;
   }
 
-  .topbar{
+  .topbarBg{
     background-color: rgb(16, 16, 16);
   }
 
@@ -336,24 +344,17 @@
   z-index: 9999;
   right: 0;
   margin-right: 20px;
-  color:#FFFF;
+
   cursor: pointer;
 }
 
 
 
 .topDropDown {
-  /* --barcelona-menu-outline: rgba(255, 255, 255, 0.04); */
   width: 10rem;
-  /* height: 12rem; */
   border-radius: 16px;
-  background-color: rgb(24, 24, 24);
   border: none;
-  color: #FFFF;
-  
-  /* border-bottom-width: 100%;
-  border-bottom-color: antiquewhite;
-  border-bottom-style: solid; */
+
 }
 
 .topDropDownSub{

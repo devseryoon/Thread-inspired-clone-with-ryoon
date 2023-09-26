@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import logo from "../../public/assets/light-logo.svg";
+import styled, { css } from "styled-components";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +28,7 @@ const TopDropDownMenu = () => {
   const router = useRouter();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { setTheme } = useTheme();
+
   return (
     <DropdownMenu open={tdmModalOpen} onOpenChange={setTdmModalOpen}>
       <DropdownMenuTrigger
@@ -37,21 +40,17 @@ const TopDropDownMenu = () => {
       >
         <AlignRight />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="topDropDown">
-        {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-        {/* <DropdownMenuSeparator /> */}
+      <DropdownMenuContent
+        align="end"
+        className="topDropDown dark:bg-neutral-700"
+      >
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger className="DropdownMenuSubTrigger">
-            모드전환{" "}
-            {/* <Button variant="outline" size="icon">
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button> */}
+          <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
+            모드전환
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent
-              className="DropdownMenuSubContent"
+              className=" dark:bg-neutral-700"
               sideOffset={2}
               alignOffset={-5}
             >

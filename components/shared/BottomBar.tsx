@@ -6,9 +6,8 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-//모바일용
+
 const BottomBar = () => {
-  const router = useRouter();
   const pathname = usePathname();
   const { userId } = useAuth();
   const { theme } = useTheme();
@@ -17,12 +16,12 @@ const BottomBar = () => {
   return (
     <section
       className={`sticky  bottom-0 z-10 w-full 
-      rounded-t-3xl p-4 backdrop-blur-lg
+      rounded-t-3xl p-4 
       
        xs:px-7 flex flex-col 
        justify-center 
        items-center
-       ${theme === "dark" ? "forDarkBg" : "bg-inherit"}
+       ${theme === "dark" ? "forDarkBg backdrop-blur-lg" : "bg-white"}
        `}
     >
       <div className="bottombar_container">
@@ -46,13 +45,6 @@ const BottomBar = () => {
                 height={24}
                 className="object-contain"
               />
-
-              {/* <p
-                style={{ color: isActive ? "#EFEFEF" : "rgb(119, 119, 119)" }}
-                className="text-subtle-medium  max-sm:hidden"
-              >
-                {link.label.split(/\s+/)[0]}
-              </p> */}
             </Link>
           );
         })}
