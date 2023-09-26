@@ -2,11 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-.body {
+:root {
+  /* Your default theme */
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme='dark'] {
+  --background: rgb(16, 16, 16);
+  --foreground: white;
+}
+
+/* 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background:rgb(16, 16, 16);
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+} */
+
+
+.forDarkBg {
   background-color: rgb(16, 16, 16);
 }
+
+.body {
+  /* background-color: rgb(16, 16, 16); */
+}
 .main-container {
- background-color: rgb(16, 16, 16);
+ /* background-color: rgb(16, 16, 16); */
 }
 
 @layer components {
@@ -73,10 +137,10 @@
     background-color: rgb(16, 16, 16);
   }
 
-  .bottombar {
+  /* .bottombar {
     @apply sticky  bottom-0 z-10 w-full rounded-t-3xl p-4 backdrop-blur-lg xs:px-7 flex flex-col justify-center items-center;
     background-color:rgba(16, 16, 16, 0.85);
-  }
+  } */
 
   .bottombar_container {
     @apply flex items-center w-full max-w-xl justify-between gap-3 xs:gap-5 
@@ -275,6 +339,44 @@
   color:#FFFF;
   cursor: pointer;
 }
+
+
+
+.topDropDown {
+  /* --barcelona-menu-outline: rgba(255, 255, 255, 0.04); */
+  width: 10rem;
+  /* height: 12rem; */
+  border-radius: 16px;
+  background-color: rgb(24, 24, 24);
+  border: none;
+  color: #FFFF;
+  
+  /* border-bottom-width: 100%;
+  border-bottom-color: antiquewhite;
+  border-bottom-style: solid; */
+}
+
+.topDropDownSub{
+  --always-dark-overlay:#a2a2a266;
+  padding: 12px;
+  width: 100%;
+  border-bottom: 1px solid var(--always-dark-overlay);
+  /* border-bottom-color: var(--always-dark-overlay); */
+}
+.topDropDownSub2{
+
+  padding: 12px;
+  width: 100%;
+
+  /* border-bottom-color: var(--always-dark-overlay); */
+}
+.topDropDownSub[data-highlighted]{
+  background-color: rgb(104, 134, 58);
+}
+/* .topDropDownSub:hover {
+
+} */
+
 /* .toggleDarkmode:hover{
 
 } */

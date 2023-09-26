@@ -1,28 +1,26 @@
 "use client";
-import {
-  OrganizationSwitcher,
-  SignedIn,
-  SignedOut,
-  useUser,
-} from "@clerk/nextjs";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { dark } from "@clerk/themes";
+import { useState } from "react";
 import logo from "../../public/assets/light-logo.svg";
-import { Bold } from "lucide-react";
-import { Toggle } from "@/components/ui/toggle";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useEffect, useState } from "react";
-const TopBar = () => {
-  // const temopUser = useUser();
-  // console.log("temopUser: ", temopUser);
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { usePathname, useRouter } from "next/navigation";
+import { AlignRight } from "lucide-react";
+import TopDropDownMenu from "./TopDropDownMenu";
 
-  const [toggleDarkmode, setToggleDarkMode] = useState(false);
+const TopBar = () => {
+  const router = useRouter();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
-  // useEffect(() => {
-  //   console.log("DarkModeOn");
-  //   setTdmModalOpen((prev) => !prev);
-  // }, [toggleDarkmode]);
+
   return (
     <nav className="topbar">
       <Link href="/" className="flex items-center gap-4">
@@ -31,7 +29,10 @@ const TopBar = () => {
             <Image src={logo} alt="Threads logo" />
           </div>
         </div>
-        <p className="text-heading3-bold text-light-1 max-xs:hidden">Threads</p>
+        <p className="text-heading3-bold text-light-1 max-xs:hidden ml-0">
+          Threads
+        </p>
+        <p className=" m-0  text-x-small-semibold text-neutral-600 ">(clone)</p>
       </Link>
       <div className="flex items-center gap-1">
         <div className="block md:hidden">
@@ -48,24 +49,10 @@ const TopBar = () => {
             </SignedOut>
           </SignedIn>
         </div>
-        <div
-          className="toggleDarkmode"
-          onClick={() => {
-            setTdmModalOpen((prev) => !prev);
-            console.log("modal open");
-          }}
-        >
-          <div className="space-y-2 justify-end items-end">
-            <Skeleton className="h-1 w-[10px]" />
-            <Skeleton className="h-1 w-[15px]" />
-          </div>
-          <div className={`tdmModal ${tdmModalOpen ? "flex" : "hidden"}`}>
-            <span className="tdmMOdal sub">모드전환</span>
-            <span className="tdmMOdal sub">정보</span>
-            <span className="tdmMOdal sub">문제신고</span>
-            <span className="tdmMOdal  none">로그아웃</span>
-          </div>
+        <div className="toggleDarkmode">
+          <TopDropDownMenu />
         </div>
+
         {/* <OrganizationSwitcher
           hidePersonal={false}
           appearance={{

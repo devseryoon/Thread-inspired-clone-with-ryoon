@@ -1,20 +1,32 @@
 "use client"; // useRouter는 온리 client side에 적용됨으로 해당 사항 적시해줘야 함.
 // 이것은 client side rendered component라는 표기임.
-import { sidebarLinks } from "@/constants";
+import { sidebarLinkDark, sidebarLinkWhite } from "@/constants";
+import { useAuth } from "@clerk/nextjs";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
-
 import { usePathname, useRouter } from "next/navigation";
 //모바일용
 const BottomBar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { userId } = useAuth();
+  const { theme } = useTheme();
+  console.log("ddsfdsfsdfdsf theme", theme);
+  var tempLinks = theme === "dark" ? sidebarLinkDark : sidebarLinkWhite;
   return (
-    <section className="bottombar">
+    <section
+      className={`sticky  bottom-0 z-10 w-full 
+      rounded-t-3xl p-4 backdrop-blur-lg
+      
+       xs:px-7 flex flex-col 
+       justify-center 
+       items-center
+       ${theme === "dark" ? "forDarkBg" : "bg-inherit"}
+       `}
+    >
       <div className="bottombar_container">
-        {sidebarLinks.map((link) => {
+        {tempLinks.map((link) => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
@@ -28,7 +40,7 @@ const BottomBar = () => {
               } bottom_action`}
             >
               <Image
-                src={isActive ? link.imgURL.white : link.imgURL.dark}
+                src={isActive ? link.imgURL.active : link.imgURL.gray}
                 alt={link.label}
                 width={24}
                 height={24}

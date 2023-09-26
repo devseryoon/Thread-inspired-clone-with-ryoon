@@ -21,21 +21,28 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-      }}
+    // appearance={{
+    //   baseTheme: dark,
+    // }}
     >
       <html lang="en">
         <body className={`${inter.className} body`}>
-          <TopBar />
-          <main className="flex flex-row">
-            {/* <LeftSideBar /> */}
-            <section className="main-container">
-              <div className="w-full max-w-xl">{children}</div>
-            </section>
-            {/* <RightSideBar /> */}
-          </main>
-          <BottomBar />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TopBar />
+            <main className="flex flex-row">
+              {/* <LeftSideBar /> */}
+              <section className="main-container">
+                <div className="w-full max-w-xl">{children}</div>
+              </section>
+              {/* <RightSideBar /> */}
+            </main>
+            <BottomBar />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

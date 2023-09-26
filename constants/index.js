@@ -1,54 +1,104 @@
-export const sidebarLinks = [
+export const sidebarLinkWhite = [
   {
     imgURL: {
-      white: "/assets/new/white/Home.svg",
-      dark: "/assets/new/dark/Home.svg",
+      gray: "/assets/new/theme/white/gray/Home.svg",
+      active: "/assets/new/theme/white/active/Home.svg",
     },
     route: "/",
     label: "Home",
   },
   {
     imgURL: {
-      white: "/assets/new/white/Search.svg",
-      dark: "/assets/new/dark/Search.svg",
+      gray: "/assets/new/theme/white/gray/Search.svg",
+      active: "/assets/new/theme/white/active/Search.svg",
     },
     route: "/search",
     label: "Search",
   },
   {
     imgURL: {
-      white: "/assets/new/white/Heart.svg",
-      dark: "/assets/new/dark/Heart.svg",
+      gray: "/assets/new/theme/white/gray/Heart.svg",
+      active: "/assets/new/theme/white/active/Heart.svg",
     },
     route: "/activity",
     label: "Activity",
   },
   {
     imgURL: {
-      white: "/assets/new/white/Create.svg",
-      dark: "/assets/new/dark/Create.svg",
+      gray: "/assets/new/theme/white/gray/Create.svg",
+      active: "/assets/new/theme/white/active/Create.svg",
     },
     route: "/create-thread",
     label: "Create Thread",
   },
   {
     imgURL: {
-      white: "/assets/new/white/community.svg",
-      dark: "/assets/new/dark/community.svg",
+      gray: "/assets/new/theme/white/gray/community.svg",
+      active: "/assets/new/theme/white/active/community.svg",
     },
     route: "/communities",
     label: "Communities",
   },
   {
     imgURL: {
-      white: "/assets/new/white/Profile.svg",
-      dark: "/assets/new/dark/Profile.svg",
+      gray: "/assets/new/theme/white/gray/Profile.svg",
+      active: "/assets/new/theme/white/active/Profile.svg",
     },
     route: "/profile",
     label: "Profile",
   },
 ];
 
+export const sidebarLinkDark = [
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/Home.svg",
+      active: "/assets/new/theme/dark/active/Home.svg",
+    },
+    route: "/",
+    label: "Home",
+  },
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/Search.svg",
+      active: "/assets/new/theme/dark/active/Search.svg",
+    },
+    route: "/search",
+    label: "Search",
+  },
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/Heart.svg",
+      active: "/assets/new/theme/dark/active/Heart.svg",
+    },
+    route: "/activity",
+    label: "Activity",
+  },
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/Create.svg",
+      active: "/assets/new/theme/dark/active/Create.svg",
+    },
+    route: "/create-thread",
+    label: "Create Thread",
+  },
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/community.svg",
+      active: "/assets/new/theme/dark/active/community.svg",
+    },
+    route: "/communities",
+    label: "Communities",
+  },
+  {
+    imgURL: {
+      gray: "/assets/new/theme/dark/gray/Profile.svg",
+      active: "/assets/new/theme/dark/active/Profile.svg",
+    },
+    route: "/profile",
+    label: "Profile",
+  },
+];
 export const profileTabs = [
   { value: "threads", label: "Threads", icon: "/assets/new/dark/reply.svg" },
   { value: "replies", label: "Replies", icon: "/assets/new/dark/members.svg" },
