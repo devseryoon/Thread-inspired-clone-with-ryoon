@@ -6,7 +6,7 @@
   /* Your default theme */
   --background: white;
   --foreground: black;
-  color:rgb(0, 0, 0);
+  color:black;
 }
 
 [data-theme='dark'] {
@@ -113,29 +113,29 @@
 
   /* thread card  */
   .thread-card_bar {
-    @apply relative mt-2 w-0.5 grow rounded-full bg-neutral-800;
+    @apply relative mt-2 w-0.5 grow rounded-full ;
   }
 
   /* User card */
   .user-card {
-    @apply flex flex-col justify-between gap-4 max-xs:rounded-xl max-xs:bg-dark-3 max-xs:p-4 xs:flex-row xs:items-center;
+    @apply w-full flex flex-row justify-start gap-4 max-xs:rounded-xl max-xs:bg-dark-3 max-xs:p-4 xs:flex-row xs:items-center;
   }
 
   .user-card_avatar {
-    @apply flex flex-1 items-start justify-start gap-3 xs:items-center;
+    @apply grow flex items-start w-full justify-between pb-2 pr-3  gap-3 xs:items-center border-b dark:border-b-zinc-800;
   }
 
   .user-card_btn {
-    @apply h-auto min-w-[74px] rounded-lg bg-neutral-600  text-[12px] text-light-1 !important;
+    @apply h-auto items-start min-w-[74px] rounded-lg bg-neutral-600  text-[12px] text-light-1 !important;
   }
 
-  .searchbar {
+  /* .searchbar {
     @apply flex gap-1 rounded-lg bg-dark-3 px-4 py-2;
-  }
+  } */
 
-  .searchbar_input {
-    @apply border-none bg-dark-3 text-base-regular text-neutral-200 outline-none !important;
-  }
+  /* .searchbar_input {
+    @apply border-none  bg-none text-base-regular text-neutral-200 outline-none !important;
+  } */
 
   .topbar {
     @apply fixed top-0 z-30 flex w-full items-center justify-center px-6 py-3;
@@ -176,11 +176,9 @@
 }
 
 .badge{
-
   border-radius: 30px;
   padding:6px 8px 6px 8px;
-  background-color: rgb(30, 30, 30);
-
+  background-color: rgb(245, 245, 245);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,7 +187,7 @@
   -webkit-tap-highlight-color: transparent;
   color: rgb(119, 119, 119);
   transition-property: transform;
-  font-size: 10px;
+  font-size: .6875rem;
 
 
 }
@@ -241,12 +239,14 @@
   background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
 }
 
-.threadcard{
-  padding: 1.75rem;
-  background-color: rgba(255, 255, 255, 0.05); 
+.threadcard {
+  padding: 12px;
+  /* background-color: rgba(255, 255, 255, 0.05);  */
 
 }
-
+.borderCustom {
+  border-bottom: 1px solid rgb(222, 211, 211);
+}
 .left_action:hover {
   background-color: rgba(255, 255, 255, 0.05); /* Hover 상태일 때 배경색 설정 */
 }
@@ -349,6 +349,20 @@
 }
 
 
+.userDropDownSub{
+  --always-dark-overlay:#a2a2a266;
+  padding: 12px;
+  width: 100%;
+  border-bottom: 1px solid var(--always-dark-overlay);
+  /* border-bottom-color: var(--always-dark-overlay); */
+}
+
+.userDropDownSub2{
+ padding: 12px;
+  width: 100%;
+  
+  /* border-bottom-color: var(--always-dark-overlay); */
+}
 
 .topDropDown {
   width: 10rem;

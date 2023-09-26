@@ -24,6 +24,7 @@ async function page({ params }: { params: { id: string } }) {
         imgUrl={commDetail.image}
         bio={commDetail.bio}
         type="Community"
+        followers={7}
       />
       <div className="mt-9">
         {/** shadcn으로 바로 간단하게 탭 만들 수 있었음. 누구든지 docs보면 적용하고 응용가능함*/}
@@ -64,7 +65,9 @@ async function page({ params }: { params: { id: string } }) {
                   name={member.name}
                   username={member.username}
                   imgUrl={member.image}
+                  bio={member.bio}
                   personType="User"
+                  followers={10}
                 />
               ))}
             </section>

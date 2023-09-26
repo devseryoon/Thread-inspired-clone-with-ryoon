@@ -27,11 +27,13 @@ async function Page({
 
   return (
     <section>
-      <h1 className="head-text mb-10">Search</h1>
+      {/* <h1 className="head-text mb-10 text-black dark:dark:text-light-1">
+        Search
+      </h1> */}
 
       <Searchbar routeType="search" />
 
-      <div className="mt-14 flex flex-col gap-9">
+      <div className="mt-4 flex flex-col gap-4">
         {result.users.length === 0 ? (
           <p style={{ color: "rgb(119, 119, 119)" }} className="no-result">
             No Result
@@ -46,6 +48,8 @@ async function Page({
                 username={person.username}
                 imgUrl={person.image}
                 personType="User"
+                bio={person.bio}
+                followers={7}
               />
             ))}
           </>
