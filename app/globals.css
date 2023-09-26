@@ -275,11 +275,15 @@
   color:#FFFF;
   cursor: pointer;
 }
-.toggleDarkmode:hover{
+/* .toggleDarkmode:hover{
 
-}
+} */
 
+/* .hidden{
+  display: none;
+} */
 .tdmModal{
+  /* display: none; */
   --barcelona-menu-outline: rgba(255, 255, 255, 0.04);
   width: 10rem;
   /* height: 12rem; */
@@ -289,10 +293,10 @@
   box-shadow: 0 10.5px 21px rgba(0,0,0,.08);
   transform: translateX(0%) translateZ(1px) translateY(50%);
   box-sizing: border-box;
-  transition-property: opacity,transform;
+  /* transition-property: opacity,transform; */
   pointer-events: all;
   transition-timing-function: var(--fds-soft);
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   font-size: 13px;
   /* padding: 12px; */

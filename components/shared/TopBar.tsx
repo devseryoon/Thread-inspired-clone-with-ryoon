@@ -19,10 +19,10 @@ const TopBar = () => {
 
   const [toggleDarkmode, setToggleDarkMode] = useState(false);
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
-  useEffect(() => {
-    console.log("DarkModeOn");
-    setTdmModalOpen((prev) => !prev);
-  }, [toggleDarkmode]);
+  // useEffect(() => {
+  //   console.log("DarkModeOn");
+  //   setTdmModalOpen((prev) => !prev);
+  // }, [toggleDarkmode]);
   return (
     <nav className="topbar">
       <Link href="/" className="flex items-center gap-4">
@@ -51,14 +51,15 @@ const TopBar = () => {
         <div
           className="toggleDarkmode"
           onClick={() => {
-            setToggleDarkMode((prev) => !prev);
+            setTdmModalOpen((prev) => !prev);
+            console.log("modal open");
           }}
         >
           <div className="space-y-2 justify-end items-end">
             <Skeleton className="h-1 w-[10px]" />
             <Skeleton className="h-1 w-[15px]" />
           </div>
-          <div className={`${tdmModalOpen && "hidden"} tdmModal`}>
+          <div className={`tdmModal ${tdmModalOpen ? "flex" : "hidden"}`}>
             <span className="tdmMOdal sub">모드전환</span>
             <span className="tdmMOdal sub">정보</span>
             <span className="tdmMOdal sub">문제신고</span>

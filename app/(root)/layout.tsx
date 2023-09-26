@@ -27,17 +27,15 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${inter.className} body`}>
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            <TopBar />
-            <main className="flex flex-row">
-              {/* <LeftSideBar /> */}
-              <section className="main-container">
-                <div className="w-full max-w-xl">{children}</div>
-              </section>
-              {/* <RightSideBar /> */}
-            </main>
-            <BottomBar />
-          </ThemeProvider>
+          <TopBar />
+          <main className="flex flex-row">
+            {/* <LeftSideBar /> */}
+            <section className="main-container">
+              <div className="w-full max-w-xl">{children}</div>
+            </section>
+            {/* <RightSideBar /> */}
+          </main>
+          <BottomBar />
         </body>
       </html>
     </ClerkProvider>
