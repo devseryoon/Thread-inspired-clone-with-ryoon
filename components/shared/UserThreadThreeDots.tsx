@@ -81,12 +81,6 @@ const UserThreadThreeDots = ({
       >
         {self ? (
           <DropdownMenuItem
-            // onClick={(e) => {
-            //   e.stopPropagation();
-            //   e.preventDefault();
-            //   // startTransition(() => deleteThread(id, pathname));
-            //   setDeleted(true);
-            // }}
             onClick={async () => {
               await deleteThread(JSON.parse(threadId), pathname);
               if (!parentId || !isComment) {
