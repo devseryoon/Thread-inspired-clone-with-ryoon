@@ -74,10 +74,10 @@ const PostThread = ({ userId }: { userId: string }) => {
           name="thread"
           render={({ field }) => (
             <FormItem className="mt-10 flex flex-col  w-full gap-3">
-              <FormLabel className="text-base-semibold text-light-2">
+              <FormLabel className="text-base-semibold dark:text-light-2">
                 Content
               </FormLabel>
-              <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
+              <FormControl className="no-focus border dark:border-dark-4 dark:bg-dark-3 dark:text-light-1">
                 <Textarea rows={15} {...field} />
               </FormControl>
               <FormMessage />
