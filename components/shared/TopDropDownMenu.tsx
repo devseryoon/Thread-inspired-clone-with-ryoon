@@ -20,13 +20,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { usePathname, useRouter } from "next/navigation";
-import { AlignRight, ChevronRightIcon, Moon, Sun } from "lucide-react";
+import {
+  AlignRight,
+  ChevronRightIcon,
+  LogOut,
+  MonitorDot,
+  Moon,
+  MoonStar,
+  Sun,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
 
 const TopDropDownMenu = () => {
   const router = useRouter();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
+  const [lang, setLang] = useState(1);
   const { setTheme } = useTheme();
 
   return (
@@ -58,24 +67,49 @@ const TopDropDownMenu = () => {
                 className="DropdownMenuItem"
                 onClick={() => setTheme("light")}
               >
-                Light
+                Light <Sun width={14} height={14} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="DropdownMenuItem"
                 onClick={() => setTheme("dark")}
               >
-                Dark
+                Dark <MoonStar width={14} height={14} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="DropdownMenuItem"
                 onClick={() => setTheme("system")}
               >
                 System
+                <MonitorDot width={14} height={14} />
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
-
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
+            Languages
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent
+              className=" dark:bg-neutral-700"
+              sideOffset={2}
+              alignOffset={-5}
+            >
+              <DropdownMenuItem
+                className="DropdownMenuItem"
+                onClick={() => setTheme("light")}
+              >
+                Kor
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="DropdownMenuItem"
+                onClick={() => setTheme("dark")}
+              >
+                Eng
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
         <DropdownMenuItem className="topDropDownSub">정보</DropdownMenuItem>
         <DropdownMenuItem className="topDropDownSub">버그신고</DropdownMenuItem>
         <DropdownMenuItem className="topDropDownSub2">
@@ -85,9 +119,10 @@ const TopDropDownMenu = () => {
                 router.push("/sign-in");
               }}
             >
-              <div className="flex cursor-pointer4">로그아웃</div>
+              <div className="">로그아웃</div>
             </SignOutButton>
           </SignedIn>
+          <LogOut width={14} height={14} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

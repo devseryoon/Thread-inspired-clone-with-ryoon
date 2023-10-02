@@ -8,6 +8,8 @@ import logoWhite from "../../public/assets/light-logo.svg";
 import logDark from "../../public/assets/dark-logo.svg";
 import TopDropDownMenu from "./TopDropDownMenu";
 import { useTheme } from "next-themes";
+import { AlignHorizontalJustifyCenter } from "lucide-react";
+import { Toggle } from "@/components/ui/toggle";
 
 const TopBar = () => {
   const router = useRouter();
@@ -15,7 +17,7 @@ const TopBar = () => {
   const { theme } = useTheme();
 
   return (
-    <nav className="topbar">
+    <nav className="topbar  bg-white dark:topbarBg">
       <Link href="/" className="flex items-center gap-4">
         <div className="flex items-center justify-center w-full ">
           <div className="h-8 w-8 ">
@@ -34,8 +36,8 @@ const TopBar = () => {
         </p>
         <p className=" m-0  text-x-small-semibold text-neutral-600 ">(clone)</p>
       </Link>
-      <div className="flex items-center gap-1">
-        <div className="block md:hidden">
+      <div className="flex flex-row justify-end  items-center ">
+        {/* <div className="block md:hidden">
           <SignedIn>
             <SignedOut>
               <div className="flex-cursor-pointer">
@@ -48,12 +50,16 @@ const TopBar = () => {
               </div>
             </SignedOut>
           </SignedIn>
-        </div>
+        </div> */}
         <div
-          className={`toggleDarkmode ${
+          className={`flex flex-row toggleDarkmode ${
             theme === "dark" ? "text-white " : "text-black"
           }`}
         >
+          {/* <Toggle variant="outline" aria-label="Toggle italic">
+            en
+          </Toggle> */}
+
           <TopDropDownMenu />
         </div>
 
