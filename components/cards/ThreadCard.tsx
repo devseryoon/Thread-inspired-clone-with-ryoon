@@ -1,10 +1,8 @@
+import { containsKr, formatDateString } from "@/lib/utils";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { formatDateString } from "@/lib/utils";
-import DeleteThread from "../forms/DeleteThread";
 import { ThreadBottomAction } from "../shared/ThreadBottomAction";
-import { MoreHorizontal, MoreHorizontalIcon } from "lucide-react";
 import UserThreadThreeDots from "../shared/UserThreadThreeDots";
 interface Props {
   id: string;
@@ -41,10 +39,14 @@ const ThreadCard = ({
   comments,
   isComment,
 }: Props) => {
+  // const intl = useTranslations("ThreadCard");
+  const headersList = headers();
+  const krRes = containsKr(headersList);
+
   return (
     <article
-      className={`flex w-full flex-col  ${
-        isComment ? "px-0 xs:px-7 pb-4" : "threadcard"
+      className={`"flex w-full flex-col  ${
+        isComment ? "mt-10 px-0 xs:px-7 pb-4" : "threadcard"
       } border-b dark:border-b-zinc-800 `}
     >
       <div className="flex flex-items-start justify-between">
@@ -83,7 +85,7 @@ const ThreadCard = ({
             </p>
             <ThreadBottomAction
               isComment={isComment}
-              id={id}
+              id={JSON.stringify(id)}
               comments={comments.length}
             />
           </div>
@@ -117,7 +119,14 @@ const ThreadCard = ({
 
           <Link href={`/thread/${id}`}>
             <p className="mt-1 text-subtle-medium text-gray-1">
-              {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+              {krRes ? (
+                <>답글 {comments.length}개</>
+              ) : (
+                <>
+                  {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+                  {/* {t('locale', {locale: cur})} */}
+                </>
+              )}
             </p>
           </Link>
         </div>

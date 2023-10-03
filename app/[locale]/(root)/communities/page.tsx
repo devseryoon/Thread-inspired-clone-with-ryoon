@@ -4,7 +4,9 @@ import Searchbar from "@/components/shared/Searchbar";
 
 import { fetchCommunities } from "@/lib/actions/community.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
+import { containsKr } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 async function Page({
@@ -19,6 +21,9 @@ async function Page({
   console.log(`userInfo: ${userInfo}`);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
+  const headersList = headers();
+  const krRes = containsKr(headersList);
+
   const result = await fetchCommunities({
     searchString: "",
     pageNumber: 1,
@@ -29,7 +34,7 @@ async function Page({
     <>
       {" "}
       <section>
-        <h1 className="head-text">Communities</h1>
+        <h1 className="head-text">{krRes ? "커뮤니티" : "Communities"}</h1>
 
         <div className="mt-5">
           <Searchbar routeType="communities" />
@@ -38,7 +43,7 @@ async function Page({
           {result.communities.length === 0 ? (
             <p style={{ color: "rgb(119, 119, 119)" }} className="no-result">
               {" "}
-              No Result
+              {krRes ? "결과가 없습니다" : "No Result"}
             </p>
           ) : (
             <>

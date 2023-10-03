@@ -1,5 +1,57 @@
 {
   "Index": {
     "title": "Hello world!"
+  },
+  "no_result": "No Result",
+  "TopDropDownMenu": {
+    "clone": "clone",
+    "theme": {
+      "title": "Theme Change",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "languages": {
+      "title": "Languages",
+      "eng": "Eng",
+      "kor": "Kor"
+    },
+    "information": "Information",
+    "bug_report": "Bug report",
+    "logout": "Logout"
+  },
+  "BottomBar": {
+    "terms": "Threads terms",
+    "privacy_policy": "privacy policy",
+    "cookie": "Cookie"
+  },
+  "Searchbar": {
+    "search": "Search..."
+  },
+  "CommunityCard": {
+    "view": "View",
+    "users": "Users"
+  },
+  "UserCard": {
+    "followers": "followers",
+    "view": "View"
+  },
+  "ActivityCard": {
+    "message": "replied to your thread"
+  },
+  "ProfileHeader": {
+    "followers": "followers"
+  },
+  "ThreadCard": {
+    "replies": "reple{length}"
+  },
+  "Comment": {
+    "comment": "Comment...",
+    "reply": "Reply"
+  },
+  "UserThreadThreeDots": {
+    "delete": "Delete",
+    "block": "Block",
+    "report": "Report"
   }
 }

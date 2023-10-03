@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 interface Props {
   routeType: string;
@@ -16,6 +17,7 @@ function Searchbar({ routeType }: Props) {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const { theme } = useTheme();
+  const intl = useTranslations("Searchbar");
 
   // query after 0.3s of no input
   useEffect(() => {
@@ -47,7 +49,9 @@ function Searchbar({ routeType }: Props) {
         id="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder={`${routeType !== "/search" ? "Search..." : "Search..."}`}
+        placeholder={`${
+          routeType !== "/search" ? intl("search") : intl("search")
+        }`}
         className="no-focus border-none  text-base-regular placeholder:text-neutral-300 dark:text-neutral-200 outline-none !important; bg-neutral-100 dark:bg-neutral-900  dark:placeholder:text-zinc-500"
       />
     </div>

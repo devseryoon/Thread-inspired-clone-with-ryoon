@@ -1,52 +1,72 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import logoWhite from "../../public/assets/light-logo.svg";
+import logDark from "../../public/assets/dark-logo.svg";
+import TopDropDownMenu from "./TopDropDownMenu";
+import { useTheme } from "next-themes";
+import { AlignHorizontalJustifyCenter } from "lucide-react";
+import { Toggle } from "@/components/ui/toggle";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import logo from "../../public/assets/light-logo.svg";
+import styled, { css } from "styled-components";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuPortal,
+  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SignOutButton, SignedIn } from "@clerk/nextjs";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import logDark from "../../public/assets/dark-logo.svg";
-import logoWhite from "../../public/assets/light-logo.svg";
+import { usePathname } from "next/navigation";
+import {
+  AlignRight,
+  ChevronRightIcon,
+  LogOut,
+  MonitorDot,
+  Moon,
+  MoonStar,
+  Sun,
+} from "lucide-react";
+import { Button } from "../ui/button";
 
-import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next-intl/client";
-import { useTransition } from "react";
-
-const TopBar = () => {
-  const [isPending, startTransition] = useTransition();
+interface Props {
+  theme_title: string;
+  theme_light: string;
+  theme_dark: string;
+  theme_system: string;
+  lang_title: string;
+  lang_eng: string;
+  lang_kor: string;
+  information: string;
+  bug_report: string;
+  logout: string;
+}
+const TopBarSpare = ({
+  theme_title,
+  theme_light,
+  theme_dark,
+  theme_system,
+  lang_title,
+  lang_eng,
+  lang_kor,
+  information,
+  bug_report,
+  logout,
+}: Props) => {
   const router = useRouter();
-  const pathname = usePathname();
-
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const intl = useTranslations("TopDropDownMenu");
-
-  function onSelectLangChange(value: string) {
-    // const nextLocale = event.target.value;
-    startTransition(() => {
-      router.replace(pathname, { locale: value });
-    });
-  }
-
-  // useEffect(() => {
-  //   if (theme === "" || theme === undefined || theme === null) {
-  //     setTheme("dark");
-  //   }
-  // }, []);
 
   return (
-    <nav className="topbar  bg-white dark:topbarBg">
+    <nav className="topbarSpare  bg-white dark:topbarSpareBg">
       <Link href="/" className="flex items-center gap-4">
         <div className="flex items-center justify-center w-full ">
           <div className="h-8 w-8 ">
@@ -63,9 +83,7 @@ const TopBar = () => {
         >
           Threads
         </p>
-        <p className="m-0 horizontal text-x-small-semibold text-neutral-600 ">
-          ({intl("clone")})
-        </p>
+        <p className=" m-0  text-x-small-semibold text-neutral-600 ">(clone)</p>
       </Link>
       <div className="flex flex-row justify-end  items-center ">
         <div
@@ -74,7 +92,6 @@ const TopBar = () => {
           }`}
         >
           {/* <TopDropDownMenu /> */}
-          {/* <LocaleSwitcher /> */}
           <DropdownMenu open={tdmModalOpen} onOpenChange={setTdmModalOpen}>
             <DropdownMenuTrigger
               onClick={(e) => {
@@ -91,7 +108,7 @@ const TopBar = () => {
             >
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
-                  {intl("theme.title")}
+                  {theme_title}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent
@@ -103,19 +120,19 @@ const TopBar = () => {
                       className="DropdownMenuItem"
                       onClick={() => setTheme("light")}
                     >
-                      {intl("theme.light")} <Sun width={14} height={14} />
+                      {theme_light} <Sun width={14} height={14} />
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
                       onClick={() => setTheme("dark")}
                     >
-                      {intl("theme.dark")} <MoonStar width={14} height={14} />
+                      {theme_dark} <MoonStar width={14} height={14} />
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
                       onClick={() => setTheme("system")}
                     >
-                      {intl("theme.system")}
+                      {theme_system}
                       <MonitorDot width={14} height={14} />
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -123,7 +140,7 @@ const TopBar = () => {
               </DropdownMenuSub>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
-                  {intl("languages.title")}
+                  {lang_title}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent
@@ -133,24 +150,24 @@ const TopBar = () => {
                   >
                     <DropdownMenuItem
                       className="DropdownMenuItem"
-                      onClick={() => onSelectLangChange("kr")}
+                      onClick={() => setTheme("light")}
                     >
-                      {intl("languages.kor")}
+                      {lang_kor}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
-                      onClick={() => onSelectLangChange("en")}
+                      onClick={() => setTheme("dark")}
                     >
-                      {intl("languages.eng")}
+                      {lang_eng}
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>
               </DropdownMenuSub>
               <DropdownMenuItem className="topDropDownSub">
-                {intl("information")}
+                {information}
               </DropdownMenuItem>
               <DropdownMenuItem className="topDropDownSub">
-                {intl("bug_report")}
+                {bug_report}
               </DropdownMenuItem>
               <DropdownMenuItem className="topDropDownSub2">
                 <SignedIn>
@@ -159,7 +176,7 @@ const TopBar = () => {
                       router.push("/sign-out");
                     }}
                   >
-                    <div className=""> {intl("logout")}</div>
+                    <div className=""> {logout}</div>
                   </SignOutButton>
                 </SignedIn>
                 <LogOut width={14} height={14} />
@@ -172,4 +189,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default TopBarSpare;

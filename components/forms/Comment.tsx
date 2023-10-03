@@ -25,6 +25,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { CommentValidation, ThreadValidation } from "@/lib/validations/thread";
 import { addCommentToThread, createThread } from "@/lib/actions/thread.actions";
+import { useTranslations } from "next-intl";
 
 interface Props {
   threadId: string;
@@ -35,7 +36,7 @@ interface Props {
 const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
-
+  const intl = useTranslations("Comment");
   const form = useForm({
     resolver: zodResolver(CommentValidation),
     defaultValues: {
@@ -75,7 +76,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
               <FormControl className="border-none bg-transparent">
                 <Input
                   type="text"
-                  placeholder="Comment..."
+                  placeholder={intl("comment")}
                   className="no-focus text-light-1 outline-none"
                   {...field}
                 />
@@ -85,7 +86,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
         />
 
         <Button type="submit" className="comment-form_btn">
-          Reply
+          {intl("reply")}
         </Button>
       </form>
     </Form>

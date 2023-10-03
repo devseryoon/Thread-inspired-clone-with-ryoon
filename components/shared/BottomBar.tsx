@@ -2,6 +2,7 @@
 // 이것은 client side rendered component라는 표기임.
 import { sidebarLinkDark, sidebarLinkWhite } from "@/constants";
 import { useAuth } from "@clerk/nextjs";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,8 @@ const BottomBar = () => {
   const pathname = usePathname();
   const { userId } = useAuth();
   const { theme } = useTheme();
-  console.log("ddsfdsfsdfdsf theme", theme);
+  const intl = useTranslations("BottomBar");
+
   var tempLinks = theme === "dark" ? sidebarLinkDark : sidebarLinkWhite;
   return (
     <section
@@ -55,13 +57,13 @@ const BottomBar = () => {
             <span>© 2023</span>
           </li>
           <li>
-            <span>Threads 약관</span>
+            <span>{intl("terms")}</span>
           </li>
           <li>
-            <span>개인정보처리방침</span>
+            <span>{intl("privacy_policy")}</span>
           </li>
           <li>
-            <span>쿠키</span>
+            <span>{intl("cookie")}</span>
           </li>
         </ul>
       </footer>

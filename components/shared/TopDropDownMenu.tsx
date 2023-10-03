@@ -116,7 +116,7 @@ const TopDropDownMenu = () => {
           <SignedIn>
             <SignOutButton
               signOutCallback={() => {
-                router.push("/sign-in");
+                router.push("/sign-out");
               }}
             >
               <div className="">로그아웃</div>

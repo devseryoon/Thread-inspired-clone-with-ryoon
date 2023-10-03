@@ -18,7 +18,7 @@ export default function Page() {
           />
         </picture>
         <div className={style.loginclerk}>
-          <h1 className="head-text pl-8">New to Thread?</h1>
+          <h1 className="head-text pl-8 text-light-1">New to Thread?</h1>
           <SignIn />
         </div>
       </div>

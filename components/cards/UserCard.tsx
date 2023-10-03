@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface Props {
   id: string;
@@ -24,19 +25,12 @@ const UserCard = ({
   bio,
 }: Props) => {
   const router = useRouter();
+  const intl = useTranslations("UserCard");
 
   const isCommunity = personType === "Community";
   return (
     <Link
       href={`/profile/${id}`}
-      // onClick={(e) => {
-      //   e.preventDefault();
-      //   if (isCommunity) {
-      //     router.push(`/communities/${id}`);
-      //   } else {
-      //     router.push(`/profile/${id}`);
-      //   }
-      // }}
       className="pl-3 pt-2 flex font-light  mb-0 mt-0 "
     >
       <div className="w-10 h-10 rounded-full bg-neutral-600 mt-1  mr-4  overflow-hidden">
@@ -57,7 +51,7 @@ const UserCard = ({
             {bio}
           </p>
           <p className=" text-small-regular dark:text-light-1 leading-7">
-            {followers} followers
+            {followers} {intl("followers")}
           </p>
         </div>
         <Button
@@ -74,7 +68,7 @@ const UserCard = ({
             }
           }}
         >
-          View
+          {intl("view")}
         </Button>
       </div>
     </Link>

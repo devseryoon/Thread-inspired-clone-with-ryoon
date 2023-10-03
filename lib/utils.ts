@@ -1,6 +1,27 @@
 import { type ClassValue, clsx } from "clsx";
+import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { twMerge } from "tailwind-merge";
 
+// created by chatgpt
+//아래의 스택오버플로우를 참고하여 적용함
+//credit: https://stackoverflow.com/questions/75362636/how-can-i-get-the-url-pathname-on-a-server-component-next-js-13
+
+export function containsKr(headersList: ReadonlyHeaders): boolean {
+  const domain = headersList.get("host") || "";
+  const fullUrl = headersList.get("referer") || "";
+  const [, pathname] =
+    fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || [];
+  const res = pathname === undefined ? false : pathname.includes("/kr");
+  return res;
+}
+
+export function containsKrForClient(pathname: string): boolean {
+  // const domain = headersList.get("host") || "";
+  // const fullUrl = headersList.get("referer") || "";
+  // const [, pathname] =
+  //   fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || [];
+  return pathname.includes("/kr");
+}
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

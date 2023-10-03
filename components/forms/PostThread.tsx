@@ -26,19 +26,25 @@ import { ChangeEvent, useState } from "react";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
 import { useOrganization } from "@clerk/nextjs";
+// interface Props {
+//   user: {
+//     id: string;
+//     objectId: string;
+//     username: string;
+//     name: string;
+//     bio: string;
+//     image: string;
+//   };
+//   btnTitle: string;
+//   krRes: boolean;
+// }
+
 interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
+  userId: string;
+  krRes: boolean;
 }
 
-const PostThread = ({ userId }: { userId: string }) => {
+const PostThread = ({ userId, krRes }: Props) => {
   // console.log(`유저아이디: ${userId}`);
   const router = useRouter();
   const pathname = usePathname();
@@ -73,10 +79,10 @@ const PostThread = ({ userId }: { userId: string }) => {
           control={form.control}
           name="thread"
           render={({ field }) => (
-            <FormItem className="mt-10 flex flex-col  w-full gap-3">
-              <FormLabel className="text-base-semibold dark:text-light-2">
+            <FormItem className="mt-10 flex flex-col  w-full gap-1">
+              {/* <FormLabel className="text-base-semibold dark:text-light-2">
                 Content
-              </FormLabel>
+              </FormLabel> */}
               <FormControl className="no-focus border dark:border-dark-4 dark:bg-dark-3 dark:text-light-1">
                 <Textarea rows={15} {...field} />
               </FormControl>
@@ -86,7 +92,7 @@ const PostThread = ({ userId }: { userId: string }) => {
         />
 
         <Button type="submit" className="bg-neutral-600">
-          Post Thread
+          {krRes ? "게시" : "Post Thread"}
         </Button>
       </form>
     </Form>

@@ -1,0 +1,57 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+
+  "TopDropDownMenu": {
+    "clone": "클론",
+    "theme": {
+      "title": "모드 전환",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "languages": {
+      "title": "언어 변경",
+      "eng": "영어",
+      "kor": "한국어"
+    },
+    "information": "정보",
+    "bug_report": "버그 신고",
+    "logout": "로그아웃"
+  },
+  "BottomBar": {
+    "terms": "Threads 약관",
+    "privacy_policy": "개인정보처리방침",
+    "cookie": "쿠키"
+  },
+  "Searchbar": {
+    "search": "검색하세요..."
+  },
+  "CommunityCard": {
+    "view": "보기",
+    "users": "사용자"
+  },
+  "UserCard": {
+    "followers": "팔로워",
+    "view": "보기"
+  },
+  "ActivityCard": {
+    "message": "님이 답글을 남겼습니다."
+  },
+  "ProfileHeader": {
+    "followers": "팔로워"
+  },
+  "ThreadCard": {
+    "replies": "답글 {count}개"
+  },
+  "Comment": {
+    "comment": "답글 남기기...",
+    "reply": "게시"
+  },
+  "UserThreadThreeDots": {
+    "delete": "삭제",
+    "block": "차단",
+    "report": "신고"
+  }
+}

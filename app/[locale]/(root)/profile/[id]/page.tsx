@@ -2,13 +2,15 @@ import Image from "next/image";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import { profileTabs } from "@/constants";
+import { profileTabs, profileTabsKr } from "@/constants";
 
 import ThreadsTab from "@/components/shared/ThreadsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { fetchUser } from "@/lib/actions/user.actions";
+import { headers } from "next/headers";
+import { containsKr } from "@/lib/utils";
 
 async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
@@ -17,7 +19,9 @@ async function Page({ params }: { params: { id: string } }) {
   console.log(user);
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
-
+  const headersList = headers();
+  const krRes = containsKr(headersList);
+  const proArray = krRes ? profileTabsKr : profileTabs;
   return (
     <section>
       <ProfileHeader
@@ -33,7 +37,7 @@ async function Page({ params }: { params: { id: string } }) {
       <div className="mt-9">
         <Tabs defaultValue="threads" className="w-full">
           <TabsList className="tab">
-            {profileTabs.map((tab) => (
+            {proArray.map((tab) => (
               <TabsTrigger key={tab.label} value={tab.value} className="tab">
                 <Image
                   src={tab.icon}

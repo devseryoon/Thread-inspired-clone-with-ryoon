@@ -105,6 +105,12 @@ export const profileTabs = [
   { value: "tagged", label: "Tagged", icon: "/assets/new/dark/tag.svg" },
 ];
 
+export const profileTabsKr = [
+  { value: "threads", label: "Threads", icon: "/assets/new/dark/reply.svg" },
+  { value: "replies", label: "답글", icon: "/assets/new/dark/members.svg" },
+  { value: "tagged", label: "태그", icon: "/assets/new/dark/tag.svg" },
+];
+
 export const communityTabs = [
   { value: "threads", label: "Threads", icon: "/assets/new/dark/reply.svg" },
   { value: "members", label: "Members", icon: "/assets/new/dark/members.svg" },

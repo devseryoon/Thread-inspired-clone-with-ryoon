@@ -1,4 +1,5 @@
 import { UserButton } from "@clerk/nextjs";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface Props {
@@ -22,6 +23,7 @@ const ProfileHeader = ({
   followers,
   type,
 }: Props) => {
+  const intl = useTranslations("ProfileHeader");
   return (
     <div className="flex w-full flex-col justify-start ">
       {/* <div className="flex items-center justify-between"> */}
@@ -57,7 +59,7 @@ const ProfileHeader = ({
         className="mt-4  w-full flex flex-row justify-between "
       >
         <p className=" text-base-regular text-neutral-300 dark:text-light-2 biotext">
-          {followers} followers
+          {followers} {intl("followers")}
         </p>
         <Image
           alt="instagram"

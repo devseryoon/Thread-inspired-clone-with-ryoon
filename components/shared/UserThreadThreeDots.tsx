@@ -23,6 +23,7 @@ import {
 // import { useToast } from "../ui/use-toast";
 import { useEffect, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 // import { deleteThread } from "@/lib/actions";
 interface Props {
   threadId: string;
@@ -50,6 +51,7 @@ const UserThreadThreeDots = ({
   const [deleted, setDeleted] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const intl = useTranslations("UserThreadThreeDots");
   const self = user?.id === authorId;
   useEffect(() => {
     if (deleted && !isPending) {
@@ -97,7 +99,7 @@ const UserThreadThreeDots = ({
             ) : (
               <Trash className="w-4 h-4 mr-2" />
             )}
-            Delete
+            {intl("delete")}
           </DropdownMenuItem>
         ) : (
           <>
@@ -113,7 +115,7 @@ const UserThreadThreeDots = ({
               className="userDropDownSub  dark:bg-neutral-900"
             >
               <UserX2 className="w-4 h-4 mr-2" />
-              Block
+              {intl("block")}
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={(e) => {
@@ -128,7 +130,7 @@ const UserThreadThreeDots = ({
             >
               {" "}
               <Flag className="w-4 h-4 mr-2" />
-              Report
+              {intl("report")}
             </DropdownMenuItem>
           </>
         )}
