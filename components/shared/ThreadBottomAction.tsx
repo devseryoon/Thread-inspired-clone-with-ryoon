@@ -5,6 +5,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 import { containsKrForClient } from "@/lib/utils";
@@ -43,7 +49,7 @@ export const ThreadBottomAction = ({
   // console.log("pathname:::::::;", id);
   // var imgPath = theme === "dark" ? "white" : "dark";
   const shareData = {
-    title: intl("intl"),
+    title: intl("share_title"),
     text: intl("share_text", { name: name }),
     url: `http://localhost:3000/thread/${id}`,
   };
@@ -102,7 +108,7 @@ export const ThreadBottomAction = ({
               // setOpen((prev) => !prev);
             }}
           >
-            <Send className="w-[18px] h-[18px] dark:text-light-1" />
+            <Send className="w-[18px] h-[18px] dark:text-light-1 " />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="start"
@@ -129,6 +135,17 @@ export const ThreadBottomAction = ({
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
+                {
+                  isMobile && navigator.share(shareData);
+                }
+                {
+                  !isMobile &&
+                    toast({
+                      variant: "destructive",
+                      title: "Error!",
+                      description: intl("share_only_mobile"),
+                    });
+                }
               }}
               className="userDropDownSub2  dark:bg-neutral-900"
             >

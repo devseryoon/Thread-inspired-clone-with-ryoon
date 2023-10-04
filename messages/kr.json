@@ -58,6 +58,7 @@
     "link": "링크복사",
     "share": "공유하기",
     "share_title": "Threads",
-    "share_text": "@{name}님의 스레드가 클립보드에 복사됐습니다."
+    "share_text": "@{name}님의 스레드가 클립보드에 복사됐습니다.",
+    "share_only_mobile": "모바일기기에서만 지원하는 기능입니다"
   }
 }

@@ -7,6 +7,11 @@ import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import "../../globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { fetchUser } from "@/lib/actions/user.actions";
+import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
+import { containsKr } from "@/lib/utils";
 
 async function getMessages(locale: string) {
   try {
@@ -30,6 +35,14 @@ export default async function RootLayout({
   params: { locale },
 }: Props) {
   // Validate that the incoming `locale` parameter is valid
+  const user = await currentUser();
+  if (!user) return null;
+
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
+  const headersList = headers();
+  const krRes = containsKr(headersList);
+
   const messages = await getMessages(locale);
   return (
     <html>
@@ -42,7 +55,10 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {/* <ReturnTopBar /> */}
-            <TopBar />
+            <TopBar
+            // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+            // krRes={krRes}
+            />
             <main className="flex flex-row">
               {/* <LeftSideBar /> */}
               <section className="main-container">
@@ -50,7 +66,10 @@ export default async function RootLayout({
               </section>
               {/* <RightSideBar /> */}
             </main>
-            <BottomBar />
+            <BottomBar
+              userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+              krRes={krRes}
+            />
             <Toaster />
           </ThemeProvider>
         </NextIntlClientProvider>

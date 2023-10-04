@@ -20,7 +20,10 @@ async function Page() {
       <h1 className="head-text">
         {krRes ? "스레드를 작성하세요" : "Create Thread"}
       </h1>
-      <PostThread userId={userInfo._id} krRes={krRes} />
+      <PostThread
+        userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+        krRes={krRes}
+      />
     </>
   );
 }
