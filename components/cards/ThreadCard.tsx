@@ -84,8 +84,9 @@ const ThreadCard = ({
               {content}
             </p>
             <ThreadBottomAction
+              name={author.name}
               isComment={isComment}
-              id={JSON.stringify(id)}
+              id={id}
               comments={comments.length}
             />
           </div>

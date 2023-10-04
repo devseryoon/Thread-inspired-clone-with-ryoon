@@ -53,5 +53,9 @@
     "delete": "삭제",
     "block": "차단",
     "report": "신고"
+  },
+  "ThreadBottomAction": {
+    "link": "링크복사",
+    "share": "공유하기"
   }
 }

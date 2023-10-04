@@ -53,5 +53,9 @@
     "delete": "Delete",
     "block": "Block",
     "report": "Report"
+  },
+  "ThreadBottomAction": {
+    "link": "Copy Link",
+    "share": "Share via"
   }
 }
