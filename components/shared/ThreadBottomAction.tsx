@@ -1,32 +1,25 @@
 "use client";
-import { containsKr, containsKrForClient } from "@/lib/utils";
-import { useTheme } from "next-themes";
-// import { headers } from "next/headers";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useState } from "react";
-import {
-  Link as LLink,
-  Send,
-  Share,
-  Heart,
-  MessageCircle,
-  HeartHandshake,
-  Repeat,
-  LinkIcon,
-  Share2Icon,
-} from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
+import { containsKrForClient } from "@/lib/utils";
+import {
+  HeartHandshake,
+  LinkIcon,
+  MessageCircle,
+  Repeat,
+  Send,
+  Share2Icon,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 interface Props {
   id: string;
@@ -40,17 +33,18 @@ export const ThreadBottomAction = ({
   id,
   comments,
 }: Props) => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const krRes = containsKrForClient(pathname);
   const intl = useTranslations("ThreadBottomAction");
-  console.log("pathname:::::::;", { id });
+  const { toast } = useToast();
+  // console.log("pathname:::::::;", id);
   // var imgPath = theme === "dark" ? "white" : "dark";
   const shareData = {
-    title: "Threads",
-    text: "Link to " + name + "'s post on Threads",
+    title: intl("intl"),
+    text: intl("share_text", { name: name }),
     url: `http://localhost:3000/thread/${id}`,
   };
 
@@ -100,29 +94,31 @@ export const ThreadBottomAction = ({
           className="cursor-pointer object-contain"
         /> */}
 
-        <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenu>
           <DropdownMenuTrigger
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              setOpen((prev) => !prev);
+              // setOpen((prev) => !prev);
             }}
           >
             <Send className="w-[18px] h-[18px] dark:text-light-1" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            align="end"
+            align="start"
             className="border-none dark:bg-neutral-900"
           >
             <DropdownMenuItem
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
+              onClick={() => {
+                // e.stopPropagation();
+                // e.preventDefault();
                 navigator.clipboard.writeText(shareData.url);
-                //   toast({
-                //     title: name + " has been blocked",
-                //   });
-                setOpen(false);
+
+                toast({
+                  title: shareData.title,
+                  description: shareData.text,
+                  // action: <ToastAction altText="close">close</ToastAction>,
+                });
               }}
               className="userDropDownSub !text-red-500 dark:bg-neutral-900"
             >
@@ -133,10 +129,6 @@ export const ThreadBottomAction = ({
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                //   toast({
-                //     title: name + " has been reported",
-                //   });
-                setOpen(false);
               }}
               className="userDropDownSub2  dark:bg-neutral-900"
             >

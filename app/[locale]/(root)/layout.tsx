@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import "../../globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 async function getMessages(locale: string) {
   try {
@@ -50,6 +51,7 @@ export default async function RootLayout({
               {/* <RightSideBar /> */}
             </main>
             <BottomBar />
+            <Toaster />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

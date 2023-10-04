@@ -54,15 +54,18 @@ const TopBar = () => {
       bg-white dark:topbarBg"
     >
       <BackButton />
-      <Link href="/" className="flex flex-1 items-center gap-4">
-        <div className="flex items-center justify-center w-full ">
-          <div className="h-8 w-8 ">
-            <Image
-              src={theme === "dark" ? logoWhite : logDark}
-              alt="Threads logo"
-            />
-          </div>
+      <Link
+        href="/"
+        className="flex flex-row items-center justify-center flex-1  gap-2"
+      >
+        {/* <div className="flex items-center justify-center w-full "> */}
+        <div className="h-8 w-8 ">
+          <Image
+            src={theme === "dark" ? logoWhite : logDark}
+            alt="Threads logo"
+          />
         </div>
+        {/* </div> */}
         <p
           className={`text-heading3-bold max-xs:hidden ml-0 ${
             theme === "dark" ? "text-light-1" : "text-black"

@@ -56,6 +56,8 @@
   },
   "ThreadBottomAction": {
     "link": "Copy Link",
-    "share": "Share via"
+    "share": "Share via",
+    "share_title": "Threads",
+    "share_text": "Link to @{name}'s post on Threads"
   }
 }

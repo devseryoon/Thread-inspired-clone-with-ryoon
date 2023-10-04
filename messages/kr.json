@@ -56,6 +56,8 @@
   },
   "ThreadBottomAction": {
     "link": "링크복사",
-    "share": "공유하기"
+    "share": "공유하기",
+    "share_title": "Threads",
+    "share_text": "@{name}님의 스레드가 클립보드에 복사됐습니다."
   }
 }
