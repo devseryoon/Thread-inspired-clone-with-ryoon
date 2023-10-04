@@ -5,7 +5,16 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import {
+  Link as LLink,
+  Send,
+  Share,
+  Heart,
+  MessageCircle,
+  HeartHandshake,
+  Repeat,
+} from "lucide-react";
 
 interface Props {
   id: string;
@@ -15,20 +24,26 @@ interface Props {
 export const ThreadBottomAction = ({ isComment, id, comments }: Props) => {
   const { theme } = useTheme();
   const pathname = usePathname();
-
+  const [liked, setLiked] = useState(false);
   const krRes = containsKrForClient(pathname);
   var imgPath = theme === "dark" ? "white" : "dark";
   return (
     <div className={`${isComment && "mb-10"}mt-5 flex flex-col gap-3`}>
       <div className="flex gap-3.5">
-        <Image
-          src={`/assets/new/theme/${imgPath}/active/heart-gray.svg`}
-          alt="heart"
-          width={24}
-          height={24}
-          className="cursor-pointer object-contain"
+        {/* <Heart
+          fill={liked ? "#dc2626" : "none"}
+          className="w-5 h-5 dark:text-light-1"
+        /> */}
+        <HeartHandshake
+          fill={liked ? "#dc2626" : "none"}
+          className="w-5 h-5 dark:text-light-1"
         />
+        <Repeat className="w-5 h-5 dark:text-light-1" />
         <Link href={`/thread/${id}`}>
+          <MessageCircle className="w-5 h-5 dark:text-light-1" />
+        </Link>
+
+        {/* <Link href={`/thread/${id}`}>
           <Image
             src={`/assets/new/theme/${imgPath}/active/reply.svg`}
             alt="reply"
@@ -36,21 +51,29 @@ export const ThreadBottomAction = ({ isComment, id, comments }: Props) => {
             height={24}
             className="cursor-pointer object-contain"
           />
-        </Link>
-        <Image
+        </Link> */}
+        {/* <Image
+          src={`/assets/new/theme/${imgPath}/active/heart-gray.svg`}
+          alt="heart"
+          width={24}
+          height={24}
+          className="cursor-pointer object-contain"
+        /> */}
+        {/* <Image
           src={`/assets/new/theme/${imgPath}/active/repost.svg`}
           alt="repost"
           width={24}
           height={24}
           className="cursor-pointer object-contain"
-        />
-        <Image
+        /> */}
+        {/* <Image
           src={`/assets/new/theme/${imgPath}/active/share.svg`}
           alt="share"
           width={24}
           height={24}
           className="cursor-pointer object-contain"
-        />
+        /> */}
+        <Send className="w-[18px] h-[18px] dark:text-light-1" />
       </div>
       {isComment && comments > 0 && (
         <Link href={`/thread/${id}`}>

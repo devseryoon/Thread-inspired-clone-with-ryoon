@@ -22,6 +22,7 @@ import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next-intl/client";
 import { useTransition } from "react";
+import BackButton from "./BackButton";
 
 const TopBar = () => {
   const [isPending, startTransition] = useTransition();
@@ -46,8 +47,14 @@ const TopBar = () => {
   // }, []);
 
   return (
-    <nav className="topbar  bg-white dark:topbarBg">
-      <Link href="/" className="flex items-center gap-4">
+    <nav
+      className="fixed top-0 z-30  
+    w-full items-center 
+     px-6 py-3 flex flex-row
+      bg-white dark:topbarBg"
+    >
+      <BackButton />
+      <Link href="/" className="flex flex-1 items-center gap-4">
         <div className="flex items-center justify-center w-full ">
           <div className="h-8 w-8 ">
             <Image
@@ -67,7 +74,7 @@ const TopBar = () => {
           ({intl("clone")})
         </p>
       </Link>
-      <div className="flex flex-row justify-end  items-center ">
+      <div className="flex flex-1 flex-row justify-end  items-center ">
         <div
           className={`flex flex-row toggleDarkmode ${
             theme === "dark" ? "text-white " : "text-black"

@@ -16,7 +16,7 @@ async function Home({
   // if (!user) return null;
   if (!user) redirect("/sign-in");
   const userInfo = await fetchUser(user.id);
-  console.log(`userInfo::::::::`, userInfo);
+  // console.log(`userInfo::::::::`, userInfo);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   const result = await fetchPosts(
