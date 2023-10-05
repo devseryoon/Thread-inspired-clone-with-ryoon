@@ -5,8 +5,8 @@
 :root {
   /* Your default theme */
   --background: white;
-  --foreground: black;
-  color:black;
+  --foreground: rgb(16, 16, 16);
+  color:rgb(16, 16, 16);
 }
 
 [data-theme='dark'] {
@@ -68,24 +68,24 @@
 } */
 
 
-.forDarkBg {
-  background-color: rgb(16, 16, 16);
-}
 
-.forDarkMenuBg{
-  background-color:rgba(36, 35, 35, 0.942);
-}
-.forwhiteMenuBg{
-  background-color:rgb(119, 119, 119);
-}
-.body {
-  background-color: rgb(16, 16, 16);
-}
-.main-container {
- /* background-color: rgb(16, 16, 16); */
-}
 
 @layer components {
+
+  .forDarkBg {
+    background-color: rgb(16, 16, 16);
+  }
+  
+  .forDarkMenuBg {
+    @apply bg-neutral-900;
+  }
+  .forwhiteMenuBg {
+    @apply   bg-neutral-900;
+  }
+  .body {
+    @apply  bg-neutral-900;
+
+  }  
   /* main */
   .main-container {
     @apply flex min-h-screen flex-1 flex-col items-center  px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;

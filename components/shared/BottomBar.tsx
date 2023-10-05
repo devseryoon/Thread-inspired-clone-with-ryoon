@@ -14,15 +14,23 @@ import { GroupIcon, Heart, Home, Search, User2 } from "lucide-react";
 interface Props {
   userId: string;
   krRes: boolean;
+  userInfo: {
+    id: string;
+    username: string;
+    name: string;
+    image: string;
+    bio: string;
+  };
 }
 
-const BottomBar = ({ userId, krRes }: Props) => {
+const BottomBar = ({ userId, krRes, userInfo }: Props) => {
   const pathname = usePathname();
   // const { userId } = useAuth();
   const { theme } = useTheme();
   const intl = useTranslations("BottomBar");
   // const krRes = containsKrForClient(pathname);
   var tempLinks = theme === "dark" ? sidebarLinkDark : sidebarLinkWhite;
+  console.log("theme,,,,", theme);
   return (
     <section
       className={`sticky  bottom-0 z-10 w-full 
@@ -31,7 +39,8 @@ const BottomBar = ({ userId, krRes }: Props) => {
        xs:px-7 flex flex-col 
        justify-center 
        items-center
-       ${theme === "dark" ? "forDarkBg backdrop-blur-lg" : "bg-white"}
+       bg-white
+       dark:forDarkBg dark:backdrop-blur-lg
        `}
     >
       <div className="bottombar_container">
@@ -74,7 +83,11 @@ const BottomBar = ({ userId, krRes }: Props) => {
           } bottom_action`}
         >
           <Home
-            className={`w-6 h-6 ${pathname === "/" ? "" : "text-neutral-600"}`}
+            className={`w-6 h-6 ${
+              pathname === "/"
+                ? "text-neutral-600 dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600"
+            }`}
           />
         </Link>
         <Link
@@ -85,7 +98,9 @@ const BottomBar = ({ userId, krRes }: Props) => {
         >
           <Search
             className={`w-6 h-6 ${
-              pathname === "/search" ? "" : "text-neutral-600"
+              pathname === "/search"
+                ? "text-neutral-600 dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600"
             }`}
           />
         </Link>
@@ -96,7 +111,11 @@ const BottomBar = ({ userId, krRes }: Props) => {
           } bottom_action`}
         >
           <Heart
-            className={`w-6 h-6 ${pathname === "/" ? "" : "text-neutral-600"}`}
+            className={`w-6 h-6 ${
+              pathname === "/activity"
+                ? "text-neutral-600 dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600"
+            }`}
           />
         </Link>
         <div
@@ -104,7 +123,11 @@ const BottomBar = ({ userId, krRes }: Props) => {
             pathname === "/create-thread" && "bottom_click"
           } bottom_action`}
         >
-          <CreateThreadModal userId={userId} krRes={krRes} />
+          <CreateThreadModal
+            userId={userId}
+            krRes={krRes}
+            userInfo={userInfo}
+          />
         </div>
         <Link
           href={"/communities"}
@@ -113,7 +136,11 @@ const BottomBar = ({ userId, krRes }: Props) => {
           } bottom_action`}
         >
           <GroupIcon
-            className={`w-6 h-6 ${pathname === "/" ? "" : "text-neutral-600"}`}
+            className={`w-6 h-6 ${
+              pathname === "/communities"
+                ? "text-neutral-600 dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600"
+            }`}
           />
         </Link>
       </div>

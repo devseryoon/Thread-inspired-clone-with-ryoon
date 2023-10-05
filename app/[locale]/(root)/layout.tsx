@@ -46,7 +46,7 @@ export default async function RootLayout({
   const messages = await getMessages(locale);
   return (
     <html>
-      <body>
+      <body className="dark:forDarkBg">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -68,6 +68,7 @@ export default async function RootLayout({
             </main>
             <BottomBar
               userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+              userInfo={userInfo}
               krRes={krRes}
             />
             <Toaster />

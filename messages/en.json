@@ -60,5 +60,8 @@
     "share_title": "Threads",
     "share_text": "Link to @{name}'s post on Threads",
     "share_only_mobile": "Supported only on mobile devices"
+  },
+  "PostThreadForMd": {
+    "placeholder": "Start a thread..."
   }
 }

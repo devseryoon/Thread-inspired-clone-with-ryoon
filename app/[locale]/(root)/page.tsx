@@ -26,7 +26,7 @@ async function Home({
 
   return (
     <>
-      <section className="flex flex-col gap-10">
+      <section className="flex flex-col gap-10 ">
         {result.posts.length === 0 ? (
           <p className="no-result">No threads found</p>
         ) : (

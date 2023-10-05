@@ -32,7 +32,7 @@ const TopBar = () => {
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const intl = useTranslations("TopDropDownMenu");
-
+  console.log("theme========", theme);
   function onSelectLangChange(value: string) {
     // const nextLocale = event.target.value;
     startTransition(() => {
@@ -60,27 +60,27 @@ const TopBar = () => {
       >
         {/* <div className="flex items-center justify-center w-full "> */}
         <div className="h-8 w-8 ">
-          <Image
-            src={theme === "dark" ? logoWhite : logDark}
-            alt="Threads logo"
-          />
+          {theme === "dark" ? (
+            <Image src={logoWhite} alt="Threads logo" />
+          ) : (
+            <Image src={logDark} alt="Threads logo" />
+          )}
         </div>
         {/* </div> */}
         <p
-          className={`text-heading3-bold max-xs:hidden ml-0 ${
-            theme === "dark" ? "text-light-1" : "text-black"
+          className={`text-heading3-bold max-xs:hidden ml-0 
+            dark:text-light-1 text-black
           }`}
         >
           Threads
         </p>
-        <p className="m-0 horizontal text-x-small-semibold text-neutral-600 ">
+        <p className="m-0 horizontal text-x-small-semibold dark:text-neutral-400 text-neutral-600 ">
           ({intl("clone")})
         </p>
       </Link>
       <div className="flex flex-1 flex-row justify-end  items-center ">
         <div
-          className={`flex flex-row toggleDarkmode ${
-            theme === "dark" ? "text-white " : "text-black"
+          className={`flex flex-row toggleDarkmode dark:text-white text-black
           }`}
         >
           {/* <TopDropDownMenu /> */}
