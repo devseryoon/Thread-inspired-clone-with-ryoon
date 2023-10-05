@@ -63,5 +63,9 @@
   },
   "PostThreadForMd": {
     "placeholder": "Start a thread..."
+  },
+  "CustomCreateThreadModal": {
+    "placeholder": "Start a thread...",
+    "new_thread": "New Thread"
   }
 }

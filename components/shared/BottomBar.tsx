@@ -11,6 +11,9 @@ import { usePathname, useRouter } from "next/navigation";
 import CreateThreadModal from "../modal/CreateThreadModal";
 
 import { GroupIcon, Heart, Home, Search, User2 } from "lucide-react";
+import { useState } from "react";
+import TempModal from "../modal/CustomCreateThreadModal";
+import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
 interface Props {
   userId: string;
   krRes: boolean;
@@ -31,6 +34,15 @@ const BottomBar = ({ userId, krRes, userInfo }: Props) => {
   // const krRes = containsKrForClient(pathname);
   var tempLinks = theme === "dark" ? sidebarLinkDark : sidebarLinkWhite;
   console.log("theme,,,,", theme);
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <section
       className={`sticky  bottom-0 z-10 w-full 
@@ -123,10 +135,17 @@ const BottomBar = ({ userId, krRes, userInfo }: Props) => {
             pathname === "/create-thread" && "bottom_click"
           } bottom_action`}
         >
-          <CreateThreadModal
+          {/* <CreateThreadModal
             userId={userId}
             krRes={krRes}
             userInfo={userInfo}
+          /> */}
+          <CustomCreateThreadModal
+            userId={userId}
+            krRes={krRes}
+            userInfo={userInfo}
+            // setIsOpen={setIsOpen}
+            // isOpen={isOpen}
           />
         </div>
         <Link

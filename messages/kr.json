@@ -63,5 +63,9 @@
   },
   "PostThreadForMd": {
     "placeholder": "스레드를 시작하세요..."
+  },
+  "CustomCreateThreadModal": {
+    "placeholder": "Start a thread...",
+    "new_thread": "새로운 스레드"
   }
 }
