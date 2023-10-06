@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { dark } from "@clerk/themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +13,12 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SignOutButton, SignedIn } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import logDark from "../../public/assets/dark-logo.svg";
@@ -79,6 +85,20 @@ const TopBar = () => {
         </p>
       </Link>
       <div className="flex flex-1 flex-row justify-end  items-center ">
+        <div className="flex items-center  mr-8 ">
+          <OrganizationSwitcher
+            // organizationProfileMode={"navigation"}
+            hidePersonal={false}
+            appearance={{
+              // baseTheme: dark,
+              elements: {
+                organizationSwitcherTrigger:
+                  "py-2 px-4 text-black dark:text-light-1",
+                // avatarImage:
+              },
+            }}
+          />
+        </div>
         <div
           className={`flex flex-row toggleDarkmode dark:text-white text-black
           }`}
