@@ -51,7 +51,7 @@ export const ThreadBottomAction = ({
   const shareData = {
     title: intl("share_title"),
     text: intl("share_text", { name: name }),
-    url: `http://localhost:3000/thread/${id}`,
+    url: `${process.env.SHARE_URL}/thread/${id}`,
   };
 
   return (
