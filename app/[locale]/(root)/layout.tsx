@@ -13,67 +13,58 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { containsKr } from "@/lib/utils";
 
-async function getMessages(locale: string) {
-  try {
-    return (await import(`../../../messages/${locale}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
-}
+// async function getMessages(locale: string) {
+//   try {
+//     return (await import(`../../../messages/${locale}.json`)).default;
+//   } catch (error) {
+//     notFound();
+//   }
+// }
 
-export async function generateStaticParams() {
-  return ["en", "kr"].map((locale) => ({ locale }));
-}
+// export async function generateStaticParams() {
+//   return ["en", "kr"].map((locale) => ({ locale }));
+// }
 
 type Props = {
   children: ReactNode;
-  params: { locale: string };
+  // params: { locale: string };
 };
 
 export default async function RootLayout({
   children,
-  params: { locale },
-}: Props) {
+}: // params: { locale },
+Props) {
   // Validate that the incoming `locale` parameter is valid
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) redirect("/sign-in");
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
   const headersList = headers();
   const krRes = containsKr(headersList);
 
-  const messages = await getMessages(locale);
+  // const messages = await getMessages(locale);
   return (
     <html>
       <body className="dark:forDarkBg">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {/* <ReturnTopBar /> */}
-            <TopBar
-            // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-            // krRes={krRes}
-            />
-            <main className="flex flex-row">
-              {/* <LeftSideBar /> */}
-              <section className="main-container">
-                <div className="w-full max-w-xl">{children}</div>
-              </section>
-              {/* <RightSideBar /> */}
-            </main>
-            <BottomBar
-              userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-              userInfo={userInfo}
-              krRes={krRes}
-            />
-            <Toaster />
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        {/* <ReturnTopBar /> */}
+        <TopBar
+        // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+        // krRes={krRes}
+        />
+        <main className="flex flex-row">
+          {/* <LeftSideBar /> */}
+          <section className="main-container">
+            <div className="w-full max-w-xl">{children}</div>
+          </section>
+          {/* <RightSideBar /> */}
+        </main>
+        <BottomBar
+          userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+          userInfo={userInfo}
+          krRes={krRes}
+        />
+        <Toaster />
       </body>
     </html>
   );

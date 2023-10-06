@@ -11,6 +11,7 @@ export default function Page() {
             type="image/webp"
           />
           <Image
+            priority={false}
             alt=""
             height="510"
             src="/assets/nonenglish-dark.png"

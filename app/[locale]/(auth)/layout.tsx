@@ -6,8 +6,6 @@ import type { Metadata } from "next";
 import "../../globals.css";
 import { ThemeProvider } from "@/lib/providers/themeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function RootLayout({
   children,
 }: {
@@ -16,16 +14,16 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
-        >
-          <div className="w-full flex justify-center items-center min-h-screen">
-            {children}
-          </div>
-        </ThemeProvider>
+        > */}
+        <div className="w-full flex justify-center items-center min-h-screen">
+          {children}
+        </div>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

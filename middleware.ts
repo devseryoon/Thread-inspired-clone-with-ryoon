@@ -17,11 +17,7 @@ export default authMiddleware({
   publicRoutes: ["/", "/:locale/sign-in"],
 });
 export const config = {
-  matcher: [
-    "/((?!.*\\..*|_next/static|_next/image|favicon.ico).*)",
-    "/",
-    "/(api|trpc)(.*)",
-  ],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
   api: {
     bodyParser: {
       sizeLimit: "4mb",

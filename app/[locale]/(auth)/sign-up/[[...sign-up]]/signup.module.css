@@ -1,10 +1,10 @@
-.loginmain{
+.signUp{
     background-color: rgb(16, 16, 16);
-    justify-content: center;
     width: 100%;
     height: 100vw;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     overflow-x: hidden;
     position: relative;
@@ -13,18 +13,7 @@
 
 }
 
-.loginThreadlogo{
-    display: block;
-    z-index: 0;
-    top: 0;
-    position: absolute;
-}
 
-
-.pic{
-    user-select: none;
-    pointer-events: none;
-}
 
 .loginclerk{
     top: 25vh;
@@ -41,7 +30,7 @@ margin-right: auto;
 
 }
 @media (max-height: 760px) and (max-width: 1500px) {
-    .loginmain {
+    .signUp {
         margin-top:-10vh;
         margin-left: -34vw;
     }
