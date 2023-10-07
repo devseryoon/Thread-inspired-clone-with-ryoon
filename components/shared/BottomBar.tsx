@@ -1,47 +1,29 @@
 "use client"; // useRouter는 온리 client side에 적용됨으로 해당 사항 적시해줘야 함.
 // 이것은 client side rendered component라는 표기임.
-import { sidebarLinkDark, sidebarLinkWhite } from "@/constants";
-import { containsKrForClient } from "@/lib/utils";
-import { useAuth } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import CreateThreadModal from "../modal/CreateThreadModal";
+import { usePathname } from "next/navigation";
 
-import { GroupIcon, Heart, Home, Search, User2 } from "lucide-react";
-import { useState } from "react";
-import TempModal from "../modal/CustomCreateThreadModal";
+import { GroupIcon, Heart, Home, Search } from "lucide-react";
 import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
 interface Props {
   userId: string;
   krRes: boolean;
-  userInfo: {
+  userInfoForPassing: {
     id: string;
-    username: string;
-    name: string;
-    image: string;
     bio: string;
+    image: string;
+    name: string;
+    username: string;
   };
 }
 
-const BottomBar = ({ userId, krRes, userInfo }: Props) => {
+const BottomBar = ({ userId, krRes, userInfoForPassing }: Props) => {
   const pathname = usePathname();
-  // const { userId } = useAuth();
+
   const { theme } = useTheme();
   const intl = useTranslations("BottomBar");
-  // const krRes = containsKrForClient(pathname);
-  var tempLinks = theme === "dark" ? sidebarLinkDark : sidebarLinkWhite;
-  console.log("theme,,,,", theme);
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <section
@@ -143,7 +125,7 @@ const BottomBar = ({ userId, krRes, userInfo }: Props) => {
           <CustomCreateThreadModal
             userId={userId}
             krRes={krRes}
-            userInfo={userInfo}
+            userInfoForPassing={userInfoForPassing}
             // setIsOpen={setIsOpen}
             // isOpen={isOpen}
           />

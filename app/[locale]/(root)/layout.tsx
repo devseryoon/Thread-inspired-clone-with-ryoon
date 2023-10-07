@@ -39,6 +39,14 @@ Props) {
   if (!user) redirect("/sign-in");
 
   const userInfo = await fetchUser(user.id);
+  const userInfoForPassing = {
+    id: JSON.stringify(userInfo._id),
+    bio: userInfo.bio,
+    image: userInfo.image,
+    name: userInfo.name,
+    username: userInfo.username,
+  };
+  console.log("userInfo::::::::", { userInfo });
   if (!userInfo?.onboarded) redirect("/onboarding");
   const headersList = headers();
   const krRes = containsKr(headersList);
@@ -61,7 +69,7 @@ Props) {
         </main>
         <BottomBar
           userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-          userInfo={userInfo}
+          userInfoForPassing={userInfoForPassing}
           krRes={krRes}
         />
         <Toaster />

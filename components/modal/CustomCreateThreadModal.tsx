@@ -23,19 +23,20 @@ import { useOrganization } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import PostModalThread from "../forms/PostModalThread";
 const CustomCreateThreadModal = ({
   userId,
   krRes,
-  userInfo,
+  userInfoForPassing,
 }: {
   userId: string;
   krRes: boolean;
-  userInfo: {
+  userInfoForPassing: {
     id: string;
-    username: string;
-    name: string;
-    image: string;
     bio: string;
+    image: string;
+    name: string;
+    username: string;
   };
 }) => {
   const router = useRouter();
@@ -43,6 +44,7 @@ const CustomCreateThreadModal = ({
   const { organization } = useOrganization();
   const [isOpen, setIsOpen] = useState(false);
   const intl = useTranslations("CustomCreateThreadModal");
+
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
@@ -51,7 +53,8 @@ const CustomCreateThreadModal = ({
     },
   });
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    console.log("ORG_ID: ", organization?.id);
+    console.log("onSubmit======================== ");
+    console.log("ORG_ID:::::::::::::::: ", organization?.id);
     await createThread({
       text: values.thread,
       author: userId,
@@ -61,6 +64,7 @@ const CustomCreateThreadModal = ({
 
     router.push("/");
   };
+
   // dialog 참조 ref
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -141,20 +145,20 @@ const CustomCreateThreadModal = ({
           <div className="flex flex-col items-center justify-start">
             <div className="w-8 h-8 rounded-full bg-neutral-600 overflow-hidden">
               <Image
-                src={userInfo.image}
+                src={userInfoForPassing.image}
                 height={32}
                 width={32}
                 className=""
-                alt={userInfo.name + "'s profile image"}
+                alt={userInfoForPassing.name + "'s profile image"}
               />
             </div>
             <div className="w-0.5 grow mt-2 rounded-full bg-zinc-200 dark:bg-zinc-800" />
           </div>
           <div className="w-full">
             <div className="font-semibold text-left dark:text-light-1">
-              {userInfo.username}
+              {userInfoForPassing.username}
             </div>
-            <Form {...form}>
+            {/* <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col justify-start gap-4 "
@@ -164,9 +168,6 @@ const CustomCreateThreadModal = ({
                   name="thread"
                   render={({ field }) => (
                     <FormItem className="mt-2 flex flex-col  w-full gap-1">
-                      {/* <FormLabel className="text-base-semibold dark:text-light-2">
-                  Content
-                </FormLabel> */}
                       <FormControl className="no-focus border dark:border-dark-4 dark:bg-dark-3 dark:text-light-1">
                         <Textarea
                           className="mt-1 mini-scrollbar text-base/relaxed resize-none h-16 bg-transparent w-full placeholder:text-neutral-300 dark:placeholder:text-neutral-600 pb-1 outline-none focus:border-b dark:border-b-neutral-700"
@@ -186,7 +187,8 @@ const CustomCreateThreadModal = ({
                   {krRes ? "게시" : "Post Thread"}
                 </Button>
               </form>
-            </Form>
+            </Form> */}
+            <PostModalThread userId={userInfoForPassing.id} />
           </div>
         </div>
       </dialog>
