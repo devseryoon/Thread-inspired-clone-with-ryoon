@@ -58,6 +58,7 @@ const ThreadCard = ({
                 alt="profile_pic"
                 // style={{ height: "2.75rem", width: "2.75rem" }}
                 fill
+                sizes="(max-width: 768px) 2.75rem, (max-width: 1200px) 2.75rem  w-auto  h-auto"
                 className="cursor-pointer rounded-full"
               />
             </Link>
@@ -114,7 +115,9 @@ const ThreadCard = ({
               alt={`user_${index}`}
               width={24}
               height={24}
-              className={`${index !== 0 && "-ml-5"} rounded-full object-cover`}
+              className={`${
+                index !== 0 && "-ml-5"
+              } rounded-full object-fit  h-auto `}
             />
           ))}
 

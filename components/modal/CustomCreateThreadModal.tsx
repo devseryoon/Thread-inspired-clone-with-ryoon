@@ -1,28 +1,9 @@
 "use client";
 
 import { Edit } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import * as z from "zod";
-import { Textarea } from "../ui/textarea";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
-import { createThread } from "@/lib/actions/thread.actions";
-import { ThreadValidation } from "@/lib/validations/thread";
-import { useOrganization } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import PostModalThread from "../forms/PostModalThread";
 const CustomCreateThreadModal = ({
   userId,
@@ -39,31 +20,8 @@ const CustomCreateThreadModal = ({
     username: string;
   };
 }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const { organization } = useOrganization();
   const [isOpen, setIsOpen] = useState(false);
   const intl = useTranslations("CustomCreateThreadModal");
-
-  const form = useForm({
-    resolver: zodResolver(ThreadValidation),
-    defaultValues: {
-      thread: "",
-      accountId: userId,
-    },
-  });
-  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    console.log("onSubmit======================== ");
-    console.log("ORG_ID:::::::::::::::: ", organization?.id);
-    await createThread({
-      text: values.thread,
-      author: userId,
-      communityId: organization ? organization.id : null,
-      path: pathname,
-    });
-
-    router.push("/");
-  };
 
   // dialog 참조 ref
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -103,7 +61,7 @@ const CustomCreateThreadModal = ({
       if (dialogRef.current) {
         const rect = dialogRef.current.getBoundingClientRect();
         const yPosition = rect.top + window.scrollY;
-        console.log("Div의 Y 위치:", yPosition);
+        // console.log("Div의 Y 위치:", yPosition);
       }
     };
 
@@ -118,7 +76,6 @@ const CustomCreateThreadModal = ({
     };
   }, []);
 
-  //   const yWichi = dialogRef.current.getBoundingClientRect().top;
   return (
     <div>
       <button
@@ -148,7 +105,7 @@ const CustomCreateThreadModal = ({
                 src={userInfoForPassing.image}
                 height={32}
                 width={32}
-                className=""
+                className=" w-auto  h-auto"
                 alt={userInfoForPassing.name + "'s profile image"}
               />
             </div>
@@ -158,37 +115,11 @@ const CustomCreateThreadModal = ({
             <div className="font-semibold text-left dark:text-light-1">
               {userInfoForPassing.username}
             </div>
-            {/* <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col justify-start gap-4 "
-              >
-                <FormField
-                  control={form.control}
-                  name="thread"
-                  render={({ field }) => (
-                    <FormItem className="mt-2 flex flex-col  w-full gap-1">
-                      <FormControl className="no-focus border dark:border-dark-4 dark:bg-dark-3 dark:text-light-1">
-                        <Textarea
-                          className="mt-1 mini-scrollbar text-base/relaxed resize-none h-16 bg-transparent w-full placeholder:text-neutral-300 dark:placeholder:text-neutral-600 pb-1 outline-none focus:border-b dark:border-b-neutral-700"
-                          placeholder={intl("placeholder")}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button
-                  type="submit"
-                  className=" bg-neutral-400   dark:bg-neutral-800 dark:text-neutral-300"
-                >
-                  {krRes ? "게시" : "Post Thread"}
-                </Button>
-              </form>
-            </Form> */}
-            <PostModalThread userId={userInfoForPassing.id} />
+            <PostModalThread
+              userId={userInfoForPassing.id}
+              closeModal={closeModal}
+              krRes={krRes}
+            />
           </div>
         </div>
       </dialog>

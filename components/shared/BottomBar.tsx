@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { GroupIcon, Heart, Home, Search } from "lucide-react";
+import { Edit, GroupIcon, Heart, Home, Search } from "lucide-react";
 import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
 interface Props {
   userId: string;
@@ -38,38 +38,6 @@ const BottomBar = ({ userId, krRes, userInfoForPassing }: Props) => {
        `}
     >
       <div className="bottombar_container">
-        {/* {tempLinks.map((link, index) => {
-          console.log("index=", index);
-          const isActive =
-            (pathname.includes(link.route) && link.route.length > 1) ||
-            pathname === link.route;
-          if (link.route === "/profile") link.route = `${link.route}/${userId}`;
-          if (index !== 3) {
-            return (
-              <Link
-                href={link.route}
-                key={link.label}
-                className={`bottombar_link ${
-                  isActive && "bottom_click"
-                } bottom_action`}
-              >
-                <Image
-                  src={isActive ? link.imgURL.active : link.imgURL.gray}
-                  alt={link.label}
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-              </Link>
-            );
-          } else {
-            return (
-              <div className="">
-                <CreateThreadModal userId={userId} krRes={krRes} />
-              </div>
-            );
-          }
-        })} */}
         <Link
           href={"/"}
           className={`bottombar_link ${
@@ -112,24 +80,33 @@ const BottomBar = ({ userId, krRes, userInfoForPassing }: Props) => {
             }`}
           />
         </Link>
-        <div
+        <Link
+          href={"/create-thread"}
           className={`bottombar_link ${
-            pathname === "/create-thread" && "bottom_click"
+            pathname === "/communities" && "bottom_click"
           } bottom_action`}
         >
-          {/* <CreateThreadModal
-            userId={userId}
-            krRes={krRes}
-            userInfo={userInfo}
-          /> */}
+          <Edit
+            className={`w-6 h-6 ${
+              pathname === "/create-thread"
+                ? "text-neutral-600 dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600"
+            }`}
+          />
+        </Link>
+        {/* <div
+          className={`
+            bottombar_link 
+          bottom_action
+          `}
+        >
+
           <CustomCreateThreadModal
             userId={userId}
             krRes={krRes}
             userInfoForPassing={userInfoForPassing}
-            // setIsOpen={setIsOpen}
-            // isOpen={isOpen}
           />
-        </div>
+        </div> */}
         <Link
           href={"/communities"}
           className={`bottombar_link ${

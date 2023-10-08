@@ -24,7 +24,7 @@ export async function createThread({
   communityId,
   path,
 }: Params) {
-  console.log(`author: ${author}`);
+  console.log(`createThread: author: ${author}`);
   try {
     connectToDB();
 

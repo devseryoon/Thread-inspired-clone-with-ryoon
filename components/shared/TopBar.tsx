@@ -38,7 +38,7 @@ const TopBar = () => {
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const intl = useTranslations("TopDropDownMenu");
-  console.log("theme========", theme);
+  // console.log("theme========", theme);
   function onSelectLangChange(value: string) {
     // const nextLocale = event.target.value;
     startTransition(() => {

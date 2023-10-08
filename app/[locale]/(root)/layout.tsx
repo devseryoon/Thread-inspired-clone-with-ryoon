@@ -46,26 +46,19 @@ Props) {
     name: userInfo.name,
     username: userInfo.username,
   };
-  console.log("userInfo::::::::", { userInfo });
+  // console.log("userInfo::::::::", { userInfo });
   if (!userInfo?.onboarded) redirect("/onboarding");
   const headersList = headers();
   const krRes = containsKr(headersList);
 
-  // const messages = await getMessages(locale);
   return (
     <html>
       <body className="dark:forDarkBg">
-        {/* <ReturnTopBar /> */}
-        <TopBar
-        // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-        // krRes={krRes}
-        />
+        <TopBar />
         <main className="flex flex-row">
-          {/* <LeftSideBar /> */}
           <section className="main-container">
             <div className="w-full max-w-xl">{children}</div>
           </section>
-          {/* <RightSideBar /> */}
         </main>
         <BottomBar
           userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}

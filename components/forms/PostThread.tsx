@@ -46,6 +46,8 @@ interface Props {
 
 const PostThread = ({ userId, krRes }: Props) => {
   // console.log(`유저아이디: ${userId}`);
+  const userId2 = JSON.stringify(userId).replace(/\"/gi, "");
+  console.log(userId2.replace(/\\/g, ""));
   const router = useRouter();
   const pathname = usePathname();
   const { organization } = useOrganization();
@@ -54,7 +56,7 @@ const PostThread = ({ userId, krRes }: Props) => {
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
       thread: "",
-      accountId: userId,
+      accountId: userId2,
     },
   });
 
@@ -62,7 +64,7 @@ const PostThread = ({ userId, krRes }: Props) => {
     console.log("ORG_ID: ", organization?.id);
     await createThread({
       text: values.thread,
-      author: userId,
+      author: userId2,
       communityId: organization ? organization.id : null,
       path: pathname,
     });

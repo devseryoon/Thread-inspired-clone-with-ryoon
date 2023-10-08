@@ -70,7 +70,8 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                   // width={48}
                   // height={48}
                   fill
-                  className="rounded-full "
+                  sizes="(max-width: 768px) 2.75rem, (max-width: 1200px) 2.75rem"
+                  className="rounded-full w-auto  h-auto"
                 />
               </FormLabel>
               <FormControl className="border-none bg-transparent">

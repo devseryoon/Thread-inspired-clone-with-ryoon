@@ -5,7 +5,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
-// const locales = ["en", "kr"];
+const locales = ["en", "kr"];
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 async function getMessages(locale: string) {
   try {
@@ -13,10 +16,6 @@ async function getMessages(locale: string) {
   } catch (error) {
     notFound();
   }
-}
-
-export async function generateStaticParams() {
-  return ["en", "kr"].map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
