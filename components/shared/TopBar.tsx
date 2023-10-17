@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { dark } from "@clerk/themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,20 +10,17 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  OrganizationSwitcher,
-  SignOutButton,
-  SignedIn,
-  SignedOut,
-} from "@clerk/nextjs";
+import { OrganizationSwitcher, useClerk } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { Link } from "@/navigation";
+import { useState } from "react";
 import logDark from "../../public/assets/dark-logo.svg";
 import logoWhite from "../../public/assets/light-logo.svg";
 
 import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next-intl/client";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/navigation";
 import { useTransition } from "react";
 import BackButton from "./BackButton";
 
@@ -34,7 +28,7 @@ const TopBar = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
-
+  const { signOut } = useClerk();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const intl = useTranslations("TopDropDownMenu");
@@ -104,7 +98,7 @@ const TopBar = () => {
           }`}
         >
           {/* <TopDropDownMenu /> */}
-          {/* <LocaleSwitcher /> */}
+
           <DropdownMenu open={tdmModalOpen} onOpenChange={setTdmModalOpen}>
             <DropdownMenuTrigger
               onClick={(e) => {
@@ -182,16 +176,11 @@ const TopBar = () => {
               <DropdownMenuItem className="topDropDownSub">
                 {intl("bug_report")}
               </DropdownMenuItem>
-              <DropdownMenuItem className="topDropDownSub2">
-                <SignedIn>
-                  <SignOutButton
-                    signOutCallback={() => {
-                      router.push("/sign-out");
-                    }}
-                  >
-                    <div className=""> {intl("logout")}</div>
-                  </SignOutButton>
-                </SignedIn>
+              <DropdownMenuItem
+                className="topDropDownSub2"
+                onClick={() => signOut()}
+              >
+                <div className=""> {intl("logout")}</div>
                 <LogOut width={14} height={14} />
               </DropdownMenuItem>
             </DropdownMenuContent>

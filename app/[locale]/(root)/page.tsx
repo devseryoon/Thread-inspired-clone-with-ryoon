@@ -1,20 +1,23 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
+import { unstable_setRequestLocale } from "next-intl/server";
 import ThreadCard from "@/components/cards/ThreadCard";
 import Pagination from "@/components/shared/Pagination";
 
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
-
+import { locales } from "@/navigation";
 async function Home({
   searchParams,
+  params: { locale },
 }: {
   searchParams: { [key: string]: string | undefined };
+  params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
+
   const user = await currentUser();
-  // if (!user) return null;
-  if (!user) redirect("/sign-in");
+  if (!user) return null;
   const userInfo = await fetchUser(user.id);
   // console.log(`userInfo::::::::`, userInfo);
   if (!userInfo?.onboarded) redirect("/onboarding");

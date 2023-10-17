@@ -27,7 +27,7 @@ import { ThreadValidation } from "@/lib/validations/thread";
 import { useOrganization } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/navigation";
 interface Props {
   userId: string;
   krRes: boolean;

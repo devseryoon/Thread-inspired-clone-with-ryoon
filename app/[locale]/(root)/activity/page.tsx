@@ -1,11 +1,9 @@
 import ActivityCard from "@/components/shared/ActivityCard";
 import { fetchUser, getActivity } from "@/lib/actions/user.actions";
-import { currentUser } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
 import { containsKr } from "@/lib/utils";
+import { currentUser } from "@clerk/nextjs";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 async function page() {
   const user = await currentUser();

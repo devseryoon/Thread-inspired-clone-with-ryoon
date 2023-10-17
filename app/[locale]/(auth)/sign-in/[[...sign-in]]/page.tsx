@@ -1,4 +1,6 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, SignedIn } from "@clerk/nextjs";
+import { currentUser, SignedOut } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import style from "./signin.module.css";
 import Image from "next/image";
 export default function Page() {
@@ -19,8 +21,21 @@ export default function Page() {
           />
         </picture>
         <div className={style.loginclerk}>
+          {/* <SignedIn>
+            <div>You are signed in</div>
+          </SignedIn> */}
+
           <h1 className="head-text pl-8 text-light-1">New to Thread?</h1>
-          <SignIn />
+          <SignedOut>
+            {/* <div className="text-light-1">You are signed Out</div> */}
+            <SignIn
+              appearance={{
+                elements: {
+                  baseTheme: dark,
+                },
+              }}
+            />
+          </SignedOut>
         </div>
       </div>
     </div>

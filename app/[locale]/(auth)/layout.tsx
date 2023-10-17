@@ -1,10 +1,4 @@
-//SEO
-import { ClerkProvider, auth } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
 import "../../globals.css";
-import { ThemeProvider } from "@/lib/providers/themeProvider";
 
 export default function RootLayout({
   children,

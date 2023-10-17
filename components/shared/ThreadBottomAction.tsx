@@ -23,7 +23,7 @@ import {
   Share2Icon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 

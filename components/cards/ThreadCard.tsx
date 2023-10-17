@@ -1,7 +1,7 @@
 import { containsKr, formatDateString } from "@/lib/utils";
 import { headers } from "next/headers";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { ThreadBottomAction } from "../shared/ThreadBottomAction";
 import UserThreadThreeDots from "../shared/UserThreadThreeDots";
 interface Props {

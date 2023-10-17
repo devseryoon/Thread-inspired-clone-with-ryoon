@@ -1,17 +1,11 @@
 import BottomBar from "@/components/shared/BottomBar";
 import TopBar from "@/components/shared/TopBar";
-import { ThemeProvider } from "@/lib/providers/themeProvider";
-import { NextIntlClientProvider } from "next-intl";
-import { Inter } from "next/font/google";
-import { notFound } from "next/navigation";
+import { Toaster } from "@/components/ui/toaster";
+import { currentUser } from "@clerk/nextjs";
+// import { redirect } from "@/navigation";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import "../../globals.css";
-import { Toaster } from "@/components/ui/toaster";
-import { fetchUser } from "@/lib/actions/user.actions";
-import { currentUser } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
-import { containsKr } from "@/lib/utils";
 
 // async function getMessages(locale: string) {
 //   try {
@@ -36,20 +30,23 @@ export default async function RootLayout({
 Props) {
   // Validate that the incoming `locale` parameter is valid
   const user = await currentUser();
-  if (!user) redirect("/sign-in");
+  if (!user) {
+    console.log("로그아ㅣㄴ 안됨");
+    redirect("/sign-in");
+  }
 
-  const userInfo = await fetchUser(user.id);
-  const userInfoForPassing = {
-    id: JSON.stringify(userInfo._id),
-    bio: userInfo.bio,
-    image: userInfo.image,
-    name: userInfo.name,
-    username: userInfo.username,
-  };
-  // console.log("userInfo::::::::", { userInfo });
-  if (!userInfo?.onboarded) redirect("/onboarding");
-  const headersList = headers();
-  const krRes = containsKr(headersList);
+  // const userInfo = await fetchUser(user?.id);
+  // const userInfoForPassing = {
+  //   id: JSON.stringify(userInfo._id),
+  //   bio: userInfo.bio,
+  //   image: userInfo.image,
+  //   name: userInfo.name,
+  //   username: userInfo.username,
+  // };
+  // // console.log("userInfo::::::::", { userInfo });
+  // if (!userInfo?.onboarded) redirect("/onboarding");
+  // const headersList = headers();
+  // const krRes = containsKr(headersList);
 
   return (
     <html>
@@ -61,9 +58,9 @@ Props) {
           </section>
         </main>
         <BottomBar
-          userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-          userInfoForPassing={userInfoForPassing}
-          krRes={krRes}
+        // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+        // userInfoForPassing={userInfoForPassing}
+        // krRes={krRes}
         />
         <Toaster />
       </body>

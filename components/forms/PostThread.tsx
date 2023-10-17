@@ -1,30 +1,22 @@
 "use client";
 
-import * as z from "zod";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "../ui/textarea";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import * as z from "zod";
+import { Textarea } from "../ui/textarea";
 
-import { UserValidation } from "@/lib/validations/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { updateUser } from "@/lib/actions/user.actions";
-import { useUploadThing } from "@/lib/uploadthing";
-import { isBase64Image } from "@/lib/utils";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
-import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
+import { ThreadValidation } from "@/lib/validations/thread";
+import { usePathname, useRouter } from "@/navigation";
 import { useOrganization } from "@clerk/nextjs";
 // interface Props {
 //   user: {

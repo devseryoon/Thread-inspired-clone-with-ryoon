@@ -12,7 +12,7 @@ import { useUser } from "@clerk/nextjs";
 import { Flag, Loader2, MoreHorizontalIcon, Trash, UserX2 } from "lucide-react";
 // import { useToast } from "../ui/use-toast";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/navigation";
 import { useEffect, useState, useTransition } from "react";
 // import { deleteThread } from "@/lib/actions";
 interface Props {

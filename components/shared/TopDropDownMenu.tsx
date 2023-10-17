@@ -1,36 +1,20 @@
 "use client";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
+import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import { useState } from "react";
-import logo from "../../public/assets/light-logo.svg";
-import styled, { css } from "styled-components";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { usePathname, useRouter } from "next/navigation";
-import {
-  AlignRight,
-  ChevronRightIcon,
-  LogOut,
-  MonitorDot,
-  Moon,
-  MoonStar,
-  Sun,
-} from "lucide-react";
+import { useRouter } from "@/navigation";
+import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
 
 const TopDropDownMenu = () => {
   const router = useRouter();

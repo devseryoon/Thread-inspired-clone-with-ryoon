@@ -2,27 +2,27 @@
 // 이것은 client side rendered component라는 표기임.
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "@/navigation";
+import { usePathname } from "@/navigation";
 
 import { Edit, GroupIcon, Heart, Home, Search } from "lucide-react";
 import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
-interface Props {
-  userId: string;
-  krRes: boolean;
-  userInfoForPassing: {
-    id: string;
-    bio: string;
-    image: string;
-    name: string;
-    username: string;
-  };
-}
+// interface Props {
+//   userId: string;
+//   krRes: boolean;
+//   userInfoForPassing: {
+//     id: string;
+//     bio: string;
+//     image: string;
+//     name: string;
+//     username: string;
+//   };
+// }
 
-const BottomBar = ({ userId, krRes, userInfoForPassing }: Props) => {
+const BottomBar = () => {
   const pathname = usePathname();
 
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const intl = useTranslations("BottomBar");
 
   return (

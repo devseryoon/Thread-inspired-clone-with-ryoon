@@ -1,41 +1,22 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import logoWhite from "../../public/assets/light-logo.svg";
-import logDark from "../../public/assets/dark-logo.svg";
-import TopDropDownMenu from "./TopDropDownMenu";
-import { useTheme } from "next-themes";
-import { AlignHorizontalJustifyCenter } from "lucide-react";
-import { Toggle } from "@/components/ui/toggle";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import logo from "../../public/assets/light-logo.svg";
-import styled, { css } from "styled-components";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { usePathname } from "next/navigation";
-import {
-  AlignRight,
-  ChevronRightIcon,
-  LogOut,
-  MonitorDot,
-  Moon,
-  MoonStar,
-  Sun,
-} from "lucide-react";
-import { Button } from "../ui/button";
+import { Link, useRouter } from "@/navigation";
+import { SignOutButton, SignedIn } from "@clerk/nextjs";
+import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useState } from "react";
+import logDark from "../../public/assets/dark-logo.svg";
+import logoWhite from "../../public/assets/light-logo.svg";
 
 interface Props {
   theme_title: string;

@@ -19,7 +19,7 @@ import { ThreadValidation } from "@/lib/validations/thread";
 import { useOrganization } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next-intl/client";
+import { useRouter } from "@/navigation";
 
 const PostModalThread = ({
   userId,

@@ -15,10 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html>
-        <body suppressHydrationWarning={true}>{children}</body>
-      </html>
-    </ClerkProvider>
+    // <ClerkProvider>
+    <html>
+      <body suppressHydrationWarning={true}>{children}</body>
+    </html>
+    // </ClerkProvider>
   );
 }
