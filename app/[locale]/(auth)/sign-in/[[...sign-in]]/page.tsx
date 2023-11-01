@@ -27,7 +27,7 @@ export default function Page() {
 
           <h1 className="head-text pl-8 text-light-1">New to Thread?</h1>
           <SignedOut>
-            {/* <div className="text-light-1">You are signed Out</div> */}
+            {/* <div className="text-light-1">You are signed Out</div> ddd*/}
             <SignIn
               appearance={{
                 elements: {
