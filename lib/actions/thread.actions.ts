@@ -176,5 +176,12 @@ export async function addCommentToThread(
 export async function deleteThread(id: string, path: string): Promise<void> {
   connectToDB();
   try {
-  } catch (error) {}
+    const thread = await Thread.findById(id);
+    console.log("thread: ", thread);
+    const rr = await Thread.deleteOne({ id: id });
+    console.log("rr:", rr);
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Error fetching thread: ${error.message}`);
+  }
 }
