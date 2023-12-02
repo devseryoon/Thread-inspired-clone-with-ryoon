@@ -1,6 +1,6 @@
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 import Image from "next/image";
-import { Link } from "@/navigation";
+import Link from "next/link";
 
 interface Props {
   key: string;
@@ -9,7 +9,7 @@ interface Props {
   name: string;
 }
 const ActivityCard = ({ key, href, src, name }: Props) => {
-  const intl = useTranslations("ActivityCard");
+  const intl = translate.ActivityCard;
   return (
     <Link key={key} href={`/thread/${href}`}>
       <article className="activity-card">
@@ -22,7 +22,7 @@ const ActivityCard = ({ key, href, src, name }: Props) => {
         />
         <p className="!text-small-regular text-light-1">
           <span className="mr-1 text-purple-500">{name}</span>
-          {intl("message")}
+          {intl.message}
         </p>
       </article>
     </Link>

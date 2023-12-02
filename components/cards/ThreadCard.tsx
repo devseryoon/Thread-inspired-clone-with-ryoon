@@ -1,7 +1,7 @@
 import { containsKr, formatDateString } from "@/lib/utils";
 import { headers } from "next/headers";
 import Image from "next/image";
-import { Link } from "@/navigation";
+import Link from "next/link";
 import { ThreadBottomAction } from "../shared/ThreadBottomAction";
 import UserThreadThreeDots from "../shared/UserThreadThreeDots";
 interface Props {
@@ -39,7 +39,7 @@ const ThreadCard = ({
   comments,
   isComment,
 }: Props) => {
-  // const intl = useTranslations("ThreadCard");
+  // const intl = translate("ThreadCard");
   const headersList = headers();
   const krRes = containsKr(headersList);
 
@@ -52,14 +52,7 @@ const ThreadCard = ({
       <div className="flex flex-items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">
           <div className="flex flex-col items-center">
-            <Link
-              href={{
-                pathname: "/profile/[id]",
-                params: { id: author.id },
-              }}
-              // href={`/profile/${author.id}`}
-              className="relative h-11 w-11"
-            >
+            <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
               <Image
                 src={author.image}
                 alt="profile_pic"
@@ -73,10 +66,7 @@ const ThreadCard = ({
           </div>
           <div className="flex w-full flex-col">
             <Link
-              href={{
-                pathname: "/profile/[id]",
-                params: { id: author.id },
-              }}
+              href={`/profile/${author.id}`}
               className="w-full flex flex-row justify-between"
             >
               <h4 className="cursor-pointer text-base-semibold text-black dark:text-light-1">
@@ -131,12 +121,7 @@ const ThreadCard = ({
             />
           ))}
 
-          <Link
-            href={{
-              pathname: "/thread/[id]",
-              params: { id: id },
-            }}
-          >
+          <Link href={`/thread/${id}`}>
             <p className="mt-1 text-subtle-medium text-gray-1">
               {krRes ? (
                 <>답글 {comments.length}개</>
@@ -152,10 +137,7 @@ const ThreadCard = ({
       )}
       {!isComment && community && (
         <Link
-          href={{
-            pathname: "/communities/[id]",
-            params: { id: community.id },
-          }}
+          href={`/communities/${community.id}`}
           className="mt-5 flex items-center"
         >
           <p className="text-subtle-medium text-gray-1">

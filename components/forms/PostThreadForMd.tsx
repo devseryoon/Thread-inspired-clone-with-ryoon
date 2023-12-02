@@ -17,9 +17,9 @@ import { useForm } from "react-hook-form";
 import { createThread } from "@/lib/actions/thread.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { useOrganization } from "@clerk/nextjs";
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 import Image from "next/image";
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "next/navigation";
 interface Props {
   userId: string;
   krRes: boolean;
@@ -37,7 +37,7 @@ const PostThreadForMd = ({ userId, krRes, userInfo }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const { organization } = useOrganization();
-  const intl = useTranslations("PostThreadForMd");
+  const intl = translate.PostThreadForMd;
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
@@ -94,7 +94,7 @@ const PostThreadForMd = ({ userId, krRes, userInfo }: Props) => {
                     <FormControl className="no-focus border dark:border-dark-4 dark:bg-dark-3 dark:text-light-1">
                       <Textarea
                         className="mt-1 mini-scrollbar text-base/relaxed resize-none h-16 bg-transparent w-full placeholder:text-neutral-300 dark:placeholder:text-neutral-600 pb-1 outline-none focus:border-b dark:border-b-neutral-700"
-                        placeholder={intl("placeholder")}
+                        placeholder={intl.placeholder}
                         {...field}
                       />
                     </FormControl>

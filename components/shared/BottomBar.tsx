@@ -1,9 +1,9 @@
 "use client"; // useRouter는 온리 client side에 적용됨으로 해당 사항 적시해줘야 함.
 // 이것은 client side rendered component라는 표기임.
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 import { useTheme } from "next-themes";
-import { Link } from "@/navigation";
-import { usePathname } from "@/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Edit, GroupIcon, Heart, Home, Search } from "lucide-react";
 import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
@@ -23,7 +23,7 @@ const BottomBar = () => {
   const pathname = usePathname();
 
   // const { theme } = useTheme();
-  const intl = useTranslations("BottomBar");
+  const intl = translate.BottomBar;
 
   return (
     <section
@@ -128,13 +128,13 @@ const BottomBar = () => {
             <span>© 2023</span>
           </li>
           <li>
-            <span>{intl("terms")}</span>
+            <span>{intl.terms}</span>
           </li>
           <li>
-            <span>{intl("privacy_policy")}</span>
+            <span>{intl.privacy_policy}</span>
           </li>
           <li>
-            <span>{intl("cookie")}</span>
+            <span>{intl.cookie}</span>
           </li>
         </ul>
       </footer>

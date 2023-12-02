@@ -1,8 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { usePathname } from "@/navigation";
-import { Link } from "@/navigation";
+import { usePathname } from "next/navigation";
+
+// import Link from "next/link";
+import Link from "next/link";
 import { ComponentProps } from "react";
 
 type Props = Omit<ComponentProps<typeof Link>, "href"> & {

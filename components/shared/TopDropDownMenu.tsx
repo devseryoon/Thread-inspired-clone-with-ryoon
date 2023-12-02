@@ -12,7 +12,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "@/navigation";
+import { useRouter } from "next/navigation";
 import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 

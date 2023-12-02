@@ -21,11 +21,11 @@ import { updateUser } from "@/lib/actions/user.actions";
 import { useUploadThing } from "@/lib/uploadthing";
 import { isBase64Image } from "@/lib/utils";
 import Image from "next/image";
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { CommentValidation, ThreadValidation } from "@/lib/validations/thread";
 import { addCommentToThread, createThread } from "@/lib/actions/thread.actions";
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 
 interface Props {
   threadId: string;
@@ -36,7 +36,7 @@ interface Props {
 const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
-  const intl = useTranslations("Comment");
+  const intl = translate.Comment;
   const form = useForm({
     resolver: zodResolver(CommentValidation),
     defaultValues: {
@@ -77,7 +77,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
               <FormControl className="border-none bg-transparent">
                 <Input
                   type="text"
-                  placeholder={intl("comment")}
+                  placeholder={intl.comment}
                   className="no-focus text-light-1 outline-none"
                   {...field}
                 />
@@ -87,7 +87,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
         />
 
         <Button type="submit" className="comment-form_btn">
-          {intl("reply")}
+          {intl.reply}
         </Button>
       </form>
     </Form>

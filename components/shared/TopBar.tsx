@@ -13,17 +13,18 @@ import {
 import { OrganizationSwitcher, useClerk } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { Link } from "@/navigation";
+import Link from "next/link";
 import { useState } from "react";
 import logDark from "../../public/assets/dark-logo.svg";
 import logoWhite from "../../public/assets/light-logo.svg";
 
 import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/navigation";
+
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import BackButton from "./BackButton";
-
+import translate from "@/messages/en.json";
 const TopBar = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -31,12 +32,13 @@ const TopBar = () => {
   const { signOut } = useClerk();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const intl = useTranslations("TopDropDownMenu");
-  // console.log("theme========", theme);
+  const intl = translate["TopDropDownMenu"];
+  console.log("intl========", intl);
   function onSelectLangChange(value: string) {
     // const nextLocale = event.target.value;
     startTransition(() => {
-      router.replace(pathname, { locale: value });
+      // router.replace(pathname, { locale: value });
+      router.replace(pathname);
     });
   }
 
@@ -75,7 +77,7 @@ const TopBar = () => {
           Threads
         </p>
         <p className="m-0 horizontal text-x-small-semibold dark:text-neutral-400 text-neutral-600 ">
-          ({intl("clone")})
+          {intl.clone}
         </p>
       </Link>
       <div className="flex flex-1 flex-row justify-end  items-center ">
@@ -115,7 +117,7 @@ const TopBar = () => {
             >
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
-                  {intl("theme.title")}
+                  {intl.theme.title}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent
@@ -127,19 +129,19 @@ const TopBar = () => {
                       className="DropdownMenuItem"
                       onClick={() => setTheme("light")}
                     >
-                      {intl("theme.light")} <Sun width={14} height={14} />
+                      {intl.theme.light} <Sun width={14} height={14} />
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
                       onClick={() => setTheme("dark")}
                     >
-                      {intl("theme.dark")} <MoonStar width={14} height={14} />
+                      {intl.theme.dark} <MoonStar width={14} height={14} />
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
                       onClick={() => setTheme("system")}
                     >
-                      {intl("theme.system")}
+                      {intl.theme.system}
                       <MonitorDot width={14} height={14} />
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
@@ -147,7 +149,7 @@ const TopBar = () => {
               </DropdownMenuSub>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger className="DropdownMenuItem dark:bg-neutral-700">
-                  {intl("languages.title")}
+                  {intl.languages.title}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent
@@ -159,28 +161,28 @@ const TopBar = () => {
                       className="DropdownMenuItem"
                       onClick={() => onSelectLangChange("kr")}
                     >
-                      {intl("languages.kor")}
+                      {intl.languages.kor}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="DropdownMenuItem"
                       onClick={() => onSelectLangChange("en")}
                     >
-                      {intl("languages.eng")}
+                      {intl.languages.eng}
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>
               </DropdownMenuSub>
               <DropdownMenuItem className="topDropDownSub">
-                {intl("information")}
+                {intl.information}
               </DropdownMenuItem>
               <DropdownMenuItem className="topDropDownSub">
-                {intl("bug_report")}
+                {intl.bug_report}
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="topDropDownSub2"
                 onClick={() => signOut()}
               >
-                <div className=""> {intl("logout")}</div>
+                <div className=""> {intl.logout}</div>
                 <LogOut width={14} height={14} />
               </DropdownMenuItem>
             </DropdownMenuContent>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Edit } from "lucide-react";
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import PostModalThread from "../forms/PostModalThread";
@@ -21,7 +21,7 @@ const CustomCreateThreadModal = ({
   };
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const intl = useTranslations("CustomCreateThreadModal");
+  const intl = translate.CustomCreateThreadModal;
 
   // dialog 참조 ref
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -96,7 +96,7 @@ const CustomCreateThreadModal = ({
         } dark:bg-neutral-900`}
       >
         <div className={`dialog-thread text-light-1`}>
-          <p>{intl("new_thread")}</p>
+          <p>{intl.new_thread}</p>
         </div>
         <div className="space-x-2 flex font-light">
           <div className="flex flex-col items-center justify-start">

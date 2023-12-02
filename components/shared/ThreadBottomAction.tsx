@@ -22,8 +22,8 @@ import {
   Send,
   Share2Icon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { Link } from "@/navigation";
+import translate from "@/messages/en.json";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -44,13 +44,13 @@ export const ThreadBottomAction = ({
   const [open, setOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const krRes = containsKrForClient(pathname);
-  const intl = useTranslations("ThreadBottomAction");
+  const intl = translate["ThreadBottomAction"];
   const { toast } = useToast();
   // console.log("pathname:::::::;", id);
   // var imgPath = theme === "dark" ? "white" : "dark";
   const shareData = {
-    title: intl("share_title"),
-    text: intl("share_text", { name: name }),
+    title: intl.share_title,
+    text: intl.share_text,
     url: `${process.env.SHARE_URL}/thread/${id}`,
   };
 
@@ -129,7 +129,7 @@ export const ThreadBottomAction = ({
               className="userDropDownSub !text-red-500 dark:bg-neutral-900"
             >
               <LinkIcon className="w-4 h-4 mr-2" />
-              {intl("link")}
+              {intl.link}
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={(e) => {
@@ -143,14 +143,14 @@ export const ThreadBottomAction = ({
                     toast({
                       variant: "destructive",
                       title: "Error!",
-                      description: intl("share_only_mobile"),
+                      description: intl.share_only_mobile,
                     });
                 }
               }}
               className="userDropDownSub2  dark:bg-neutral-900"
             >
               <Share2Icon className="w-4 h-4 mr-2" />
-              {intl("share")}
+              {intl.share}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -6,13 +6,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { deleteThread } from "@/lib/actions/thread.actions";
+import translate from "@/messages/en.json";
 import { useUser } from "@clerk/nextjs";
 import { Flag, Loader2, MoreHorizontalIcon, Trash, UserX2 } from "lucide-react";
 // import { useToast } from "../ui/use-toast";
-import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 // import { deleteThread } from "@/lib/actions";
 interface Props {
@@ -40,8 +39,8 @@ const UserThreadThreeDots = ({
 
   const [deleted, setDeleted] = useState(false);
   const [open, setOpen] = useState(false);
+  const intl = translate["UserThreadThreeDots"];
 
-  const intl = useTranslations("UserThreadThreeDots");
   const self = user?.id === authorId;
   useEffect(() => {
     if (deleted && !isPending) {
@@ -89,7 +88,7 @@ const UserThreadThreeDots = ({
             ) : (
               <Trash className="w-4 h-4 mr-2" />
             )}
-            {intl("delete")}
+            {intl.delete}
           </DropdownMenuItem>
         ) : (
           <>
@@ -105,7 +104,7 @@ const UserThreadThreeDots = ({
               className="userDropDownSub  dark:bg-neutral-900"
             >
               <UserX2 className="w-4 h-4 mr-2" />
-              {intl("block")}
+              {intl.block}
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={(e) => {
@@ -120,7 +119,7 @@ const UserThreadThreeDots = ({
             >
               {" "}
               <Flag className="w-4 h-4 mr-2" />
-              {intl("report")}
+              {intl.report}
             </DropdownMenuItem>
           </>
         )}

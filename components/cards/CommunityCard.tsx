@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Link } from "@/navigation";
+import Link from "next/link";
 
 import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
+import translate from "@/messages/en.json";
 
 interface Props {
   id: string;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
-  const intl = useTranslations("CommunityCard");
+  const intl = translate.CommunityCard;
   return (
     <article className="community-card">
       <div className="flex flex-wrap items-center gap-3">
@@ -42,7 +42,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
         <Link href={`/communities/${id}`}>
           <Button size="sm" className="community-card_btn">
-            {intl("view")}
+            {intl.view}
           </Button>
         </Link>
 
@@ -62,7 +62,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
             ))}
             {members.length > 3 && (
               <p className="ml-1 text-subtle-medium text-gray-1">
-                {members.length}+ {intl("users")}
+                {members.length}+ {intl.users}
               </p>
             )}
           </div>

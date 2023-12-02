@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { useRouter } from "@/navigation";
-import { Link } from "@/navigation";
-import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import translate from "@/messages/en.json";
 
 interface Props {
   id: string;
@@ -25,7 +25,7 @@ const UserCard = ({
   bio,
 }: Props) => {
   const router = useRouter();
-  const intl = useTranslations("UserCard");
+  const intl = translate.UserCard;
 
   const isCommunity = personType === "Community";
   return (
@@ -51,7 +51,7 @@ const UserCard = ({
             {bio}
           </p>
           <p className=" text-small-regular dark:text-light-1 leading-7">
-            {followers} {intl("followers")}
+            {followers} {intl.followers}
           </p>
         </div>
         <Button
@@ -68,7 +68,7 @@ const UserCard = ({
             }
           }}
         >
-          {intl("view")}
+          {intl.view}
         </Button>
       </div>
     </Link>

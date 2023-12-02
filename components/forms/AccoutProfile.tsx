@@ -18,7 +18,7 @@ import { updateUser } from "@/lib/actions/user.actions";
 import { useUploadThing } from "@/lib/uploadthing";
 import { isBase64Image } from "@/lib/utils";
 import Image from "next/image";
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";

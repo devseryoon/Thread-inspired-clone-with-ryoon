@@ -8,15 +8,6 @@ export default function Page({
 }: {
   params: { locale: string };
 }) {
-  // const [isMounted, setIsMounted] = useState(false);
-  // // const { isLoaded, signIn } = useSignIn();
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, []);
-  // if (!isMounted) {
-  //   // handle loading state
-  //   return null;
-  // }
   console.log("sign-in");
   console.log("locale", locale);
   return (

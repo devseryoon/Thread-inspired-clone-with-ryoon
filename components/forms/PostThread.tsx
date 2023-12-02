@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 
 import { createThread } from "@/lib/actions/thread.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useOrganization } from "@clerk/nextjs";
 // interface Props {
 //   user: {
