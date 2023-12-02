@@ -2,22 +2,21 @@ Next.js 13버전으로 제작한 Thread clone app입니다.[Next.js](https://nex
 
 ## 배우고 적용한 것
 
-To learn more about Next.js, take a look at the following resources:
-
-- Master Next.js 13.4 with Server Side Rendering
-- Learn MongoDB handling of complex schemas, multiple data population
-- Create beautiful layouts with TailwindCSS
-- Use Clerk for authentication
-- Handle file uploads with UploadThing
-- Explore Shadcn components
-- Listen to real-time events with webhooks
-- Understand middleware, API actions, and authorization
-- Explore & integrate new Next.js layout route groups
-- Validate data with Zod
-- Manage forms with react hook form
-- Create reusable components
-- Build a solid application architecture
-- Deploy the application with Vercel
+With This Project, I've learned:
+- Next.js 13.4 with Server Side Rendering
+- Learned MongoDB handling of complex schemas, multiple data population
+- Created beautiful layouts with TailwindCSS
+- Used Clerk for authentication
+- Handled file uploads with UploadThing
+- Explored Shadcn components
+- Listend to real-time events with webhooks
+- Understood middleware, API actions, and authorization
+- Explored & integrate new Next.js layout route groups
+- Validated data with Zod
+- Managed forms with react hook form
+- Created reusable components
+- Built a solid application architecture
+- Deployed the application with Vercel
 
 
 ## Thread-clone보러가기
