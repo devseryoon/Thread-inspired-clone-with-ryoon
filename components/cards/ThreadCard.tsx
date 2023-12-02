@@ -52,7 +52,14 @@ const ThreadCard = ({
       <div className="flex flex-items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">
           <div className="flex flex-col items-center">
-            <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
+            <Link
+              href={{
+                pathname: "/profile/[id]",
+                params: { id: author.id },
+              }}
+              // href={`/profile/${author.id}`}
+              className="relative h-11 w-11"
+            >
               <Image
                 src={author.image}
                 alt="profile_pic"
@@ -66,7 +73,10 @@ const ThreadCard = ({
           </div>
           <div className="flex w-full flex-col">
             <Link
-              href={`/profile/${author.id}`}
+              href={{
+                pathname: "/profile/[id]",
+                params: { id: author.id },
+              }}
               className="w-full flex flex-row justify-between"
             >
               <h4 className="cursor-pointer text-base-semibold text-black dark:text-light-1">
@@ -121,7 +131,12 @@ const ThreadCard = ({
             />
           ))}
 
-          <Link href={`/thread/${id}`}>
+          <Link
+            href={{
+              pathname: "/thread/[id]",
+              params: { id: id },
+            }}
+          >
             <p className="mt-1 text-subtle-medium text-gray-1">
               {krRes ? (
                 <>답글 {comments.length}개</>
@@ -137,7 +152,10 @@ const ThreadCard = ({
       )}
       {!isComment && community && (
         <Link
-          href={`/communities/${community.id}`}
+          href={{
+            pathname: "/communities/[id]",
+            params: { id: community.id },
+          }}
           className="mt-5 flex items-center"
         >
           <p className="text-subtle-medium text-gray-1">

@@ -17,7 +17,10 @@ async function Home({
   unstable_setRequestLocale(locale);
 
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) {
+    console.log("로그인 안됨");
+    redirect("/sign-in");
+  }
   const userInfo = await fetchUser(user.id);
   // console.log(`userInfo::::::::`, userInfo);
   if (!userInfo?.onboarded) redirect("/onboarding");

@@ -1,9 +1,24 @@
-import { SignIn, SignedIn } from "@clerk/nextjs";
-import { currentUser, SignedOut } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-import style from "./signin.module.css";
+"use client";
+import { SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
-export default function Page() {
+import { useEffect, useState } from "react";
+import style from "./signin.module.css";
+export default function Page({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  // const [isMounted, setIsMounted] = useState(false);
+  // // const { isLoaded, signIn } = useSignIn();
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
+  // if (!isMounted) {
+  //   // handle loading state
+  //   return null;
+  // }
+  console.log("sign-in");
+  console.log("locale", locale);
   return (
     <div className={style.loginmain}>
       <div className={style.loginThreadlogo}>
@@ -21,20 +36,14 @@ export default function Page() {
           />
         </picture>
         <div className={style.loginclerk}>
-          {/* <SignedIn>
+          <SignedIn>
             <div>You are signed in</div>
-          </SignedIn> */}
+          </SignedIn>
 
           <h1 className="head-text pl-8 text-light-1">New to Thread?</h1>
           <SignedOut>
-            {/* <div className="text-light-1">You are signed Out</div> ddd*/}
-            <SignIn
-              appearance={{
-                elements: {
-                  baseTheme: dark,
-                },
-              }}
-            />
+            <div className="text-light-1">You are signed Out</div>
+            <SignIn />
           </SignedOut>
         </div>
       </div>
