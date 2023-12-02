@@ -173,4 +173,8 @@ export async function addCommentToThread(
   }
 }
 
-export async function deleteThread(id: string, path: string): Promise<void> {}
+export async function deleteThread(id: string, path: string): Promise<void> {
+  connectToDB();
+  try {
+  } catch (error) {}
+}

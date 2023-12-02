@@ -9,7 +9,9 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link, useRouter } from "@/navigation";
+
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import { AlignRight, LogOut, MonitorDot, MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
