@@ -21,29 +21,14 @@ interface Props {
 
 const BottomBar = ({
   userId,
-  // userInfo,
   userInfoForPassing,
 }: {
   userId: any;
-  // userInfo: any;
   userInfoForPassing: any;
 }) => {
   const pathname = usePathname();
-  // const { user, isLoaded, isSignedIn } = useUser();
-  // console.log("user::", user, isLoaded, isSignedIn);
-  // const { theme } = useTheme();
+
   const intl = translate.BottomBar;
-
-  const infos = async () => {
-    console.log("BottomBar");
-
-    // const userInfo = await fetchUser(user!.id);
-    // console.log(`userInfo: ${userInfo}`);
-  };
-
-  useEffect(() => {
-    infos();
-  }, []);
 
   return (
     <section
@@ -100,7 +85,9 @@ const BottomBar = ({
             }`}
           />
         </Link>
-        {/* <Link
+        {/* 
+      기존 페이지연결 스레드 작성 페이지
+        <Link
           href={"/create-thread"}
           className={`bottombar_link ${
             pathname === "/communities" && "bottom_click"
@@ -122,8 +109,6 @@ const BottomBar = ({
         >
           <CustomCreateThreadModal
             userId={userId}
-            // userInfo={userInfo}
-            // krRes={krRes}
             userInfoForPassing={userInfoForPassing}
           />
         </div>

@@ -34,8 +34,8 @@ const PostModalThread = ({
   const router = useRouter();
   const pathname = usePathname();
   // console.log("userId: ", JSON.stringify(userId).replace(/\"/gi, ""));
-  const userId2 = JSON.stringify(userId).replace(/\"/gi, "");
-  console.log(userId2.replace(/\\/g, ""));
+  // const userId2 = JSON.stringify(userId).replace(/\"/gi, "");
+  // console.log(userId2.replace(/\\/g, ""));
 
   const { organization } = useOrganization();
 
@@ -51,7 +51,7 @@ const PostModalThread = ({
     console.log("ORG_ID: ", organization?.id);
     await createThread({
       text: values.thread,
-      author: userId2,
+      author: userId,
       communityId: organization ? organization.id : null,
       path: pathname,
     });

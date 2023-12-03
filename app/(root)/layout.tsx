@@ -23,8 +23,11 @@ export default async function RootLayout({
     redirect("/sign-in");
   }
   const userInfo = await fetchUser(user.id);
+  const modUserId = JSON.stringify(userInfo._id).replace(/\"/gi, "");
+  // console.log("userInfo._id: ", userInfo._id);
+  // console.log("dddd?:", userId2.replace(/\\/g, ""));
   const userInfoForPassing = {
-    id: userInfo._id,
+    id: modUserId.replace(/\\/g, ""),
     bio: userInfo.bio,
     image: userInfo.image,
     name: userInfo.name,

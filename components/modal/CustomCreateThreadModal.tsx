@@ -7,22 +7,12 @@ import { useEffect, useRef, useState } from "react";
 import PostModalThread from "../forms/PostModalThread";
 const CustomCreateThreadModal = ({
   userId,
-  // userInfo,
   userInfoForPassing,
 }: // krRes,
 
 {
   userId: string;
-  // userInfo: any;
   userInfoForPassing: any;
-  // krRes: boolean;
-  // userInfoForPassing: {
-  //   id: string;
-  //   bio: string;
-  //   image: string;
-  //   name: string;
-  //   username: string;
-  // };
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const intl = translate.CustomCreateThreadModal;
