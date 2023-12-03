@@ -23,11 +23,11 @@ import { useRouter } from "next/navigation";
 
 const PostModalThread = ({
   userId,
-  krRes,
+  // krRes,
   closeModal,
 }: {
   userId: string;
-  krRes: boolean;
+  // krRes: boolean;
   closeModal: () => void;
 }) => {
   const intl = translate.CustomCreateThreadModal;
@@ -87,7 +87,8 @@ const PostModalThread = ({
           type="submit"
           className=" bg-neutral-400   dark:bg-neutral-800 dark:text-neutral-300"
         >
-          {krRes ? "게시" : "Post Thread"}
+          Post Thread
+          {/* {krRes ? "게시" : "Post Thread"} */}
         </Button>
       </form>
     </Form>

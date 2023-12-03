@@ -7,22 +7,27 @@ import { useEffect, useRef, useState } from "react";
 import PostModalThread from "../forms/PostModalThread";
 const CustomCreateThreadModal = ({
   userId,
-  krRes,
+  // userInfo,
   userInfoForPassing,
-}: {
+}: // krRes,
+
+{
   userId: string;
-  krRes: boolean;
-  userInfoForPassing: {
-    id: string;
-    bio: string;
-    image: string;
-    name: string;
-    username: string;
-  };
+  // userInfo: any;
+  userInfoForPassing: any;
+  // krRes: boolean;
+  // userInfoForPassing: {
+  //   id: string;
+  //   bio: string;
+  //   image: string;
+  //   name: string;
+  //   username: string;
+  // };
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const intl = translate.CustomCreateThreadModal;
 
+  // console.log("userInfo::::", userInfo);
   // dialog 참조 ref
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -102,23 +107,23 @@ const CustomCreateThreadModal = ({
           <div className="flex flex-col items-center justify-start">
             <div className="w-8 h-8 rounded-full bg-neutral-600 overflow-hidden">
               <Image
-                src={userInfoForPassing.image}
+                src={userInfoForPassing?.image}
                 height={32}
                 width={32}
                 className=" w-auto  h-auto"
-                alt={userInfoForPassing.name + "'s profile image"}
+                alt={userInfoForPassing?.name + "'s profile image"}
               />
             </div>
             <div className="w-0.5 grow mt-2 rounded-full bg-zinc-200 dark:bg-zinc-800" />
           </div>
           <div className="w-full">
             <div className="font-semibold text-left dark:text-light-1">
-              {userInfoForPassing.username}
+              {userInfoForPassing?.username}
             </div>
             <PostModalThread
-              userId={userInfoForPassing.id}
+              userId={userInfoForPassing?.id}
               closeModal={closeModal}
-              krRes={krRes}
+              // krRes={krRes}
             />
           </div>
         </div>

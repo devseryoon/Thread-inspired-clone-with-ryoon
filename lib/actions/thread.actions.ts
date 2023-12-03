@@ -24,7 +24,7 @@ export async function createThread({
   communityId,
   path,
 }: Params) {
-  console.log(`createThread: author: ${author}`);
+  // console.log(`createThread: author: ${author}`);
   try {
     connectToDB();
 
@@ -177,7 +177,7 @@ export async function deleteThread(id: string, path: string): Promise<void> {
   connectToDB();
   try {
     const thread = await Thread.findById(id);
-    console.log("thread: ", thread);
+    // console.log("thread: ", thread);
     // const rr = await Thread.deleteOne({ id: id });
     const res = await Thread.findByIdAndDelete({ _id: id });
     console.log("ttee:", res);

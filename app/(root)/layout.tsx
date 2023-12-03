@@ -1,12 +1,13 @@
 import BottomBar from "@/components/shared/BottomBar";
 import TopBar from "@/components/shared/TopBar";
 import { Toaster } from "@/components/ui/toaster";
-import { ClerkProvider, currentUser } from "@clerk/nextjs";
+import { fetchUser } from "@/lib/actions/user.actions";
 import { ThemeProvider } from "@/lib/providers/themeProvider";
+import { ClerkProvider, currentUser } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import "../../app/globals.css";
-import { dark } from "@clerk/themes";
 type Props = {
   children: ReactNode;
 };
@@ -21,7 +22,14 @@ export default async function RootLayout({
   if (!user) {
     redirect("/sign-in");
   }
-
+  const userInfo = await fetchUser(user.id);
+  const userInfoForPassing = {
+    id: userInfo._id,
+    bio: userInfo.bio,
+    image: userInfo.image,
+    name: userInfo.name,
+    username: userInfo.username,
+  };
   return (
     <ClerkProvider
       appearance={{
@@ -43,9 +51,10 @@ export default async function RootLayout({
               </section>
             </main>
             <BottomBar
-            // userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-            // userInfoForPassing={userInfoForPassing}
-            // krRes={krRes}
+              userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+              // userInfo={userInfo}
+              userInfoForPassing={userInfoForPassing}
+              // krRes={krRes}
             />
             <Toaster />
           </ThemeProvider>
