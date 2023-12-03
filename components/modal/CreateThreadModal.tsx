@@ -28,6 +28,8 @@ import { useOrganization } from "@clerk/nextjs";
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 interface Props {
   userId: string;
   krRes: boolean;
@@ -44,6 +46,7 @@ const CreateThreadModal = ({ userId, krRes, userInfo }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const { organization } = useOrganization();
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.PostThreadForMd;
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
