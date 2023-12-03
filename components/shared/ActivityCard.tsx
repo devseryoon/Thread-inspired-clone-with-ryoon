@@ -1,3 +1,4 @@
+"use client";
 import LangContext from "@/lib/context/LangContext";
 import Image from "next/image";
 import Link from "next/link";
