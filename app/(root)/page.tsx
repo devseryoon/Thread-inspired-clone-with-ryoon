@@ -9,14 +9,11 @@ import { fetchUser } from "@/lib/actions/user.actions";
 
 async function Home({
   searchParams,
-  params: { locale },
 }: {
   searchParams: { [key: string]: string | undefined };
-  params: { locale: string };
 }) {
   const user = await currentUser();
   if (!user) {
-    console.log("로그인 안됨");
     redirect("/sign-in");
   }
   const userInfo = await fetchUser(user.id);
