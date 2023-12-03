@@ -1,6 +1,7 @@
-import translate from "@/messages/en.json";
+import LangContext from "@/lib/context/LangContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 
 interface Props {
   key: string;
@@ -9,6 +10,7 @@ interface Props {
   name: string;
 }
 const ActivityCard = ({ key, href, src, name }: Props) => {
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.ActivityCard;
   return (
     <Link key={key} href={`/thread/${href}`}>

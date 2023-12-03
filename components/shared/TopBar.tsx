@@ -14,7 +14,7 @@ import { OrganizationSwitcher, useClerk } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logDark from "../../public/assets/dark-logo.svg";
 import logoWhite from "../../public/assets/light-logo.svg";
 
@@ -24,7 +24,8 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import BackButton from "./BackButton";
-import translate from "@/messages/en.json";
+//
+import LangContext from "@/lib/context/LangContext";
 const TopBar = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -32,14 +33,23 @@ const TopBar = () => {
   const { signOut } = useClerk();
   const [tdmModalOpen, setTdmModalOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
+
   const intl = translate["TopDropDownMenu"];
   // console.log("intl========", intl);
   function onSelectLangChange(value: string) {
+    if (value === "kr") {
+      setLangKr(true);
+    } else {
+      setLangKr(false);
+    }
+
     // const nextLocale = event.target.value;
-    startTransition(() => {
-      // router.replace(pathname, { locale: value });
-      router.replace(pathname);
-    });
+    // startTransition(() => {
+    //   // router.replace(pathname, { locale: value });
+    //   router.replace(pathname);
+    // });
   }
 
   // useEffect(() => {

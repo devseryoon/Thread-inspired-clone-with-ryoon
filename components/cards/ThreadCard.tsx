@@ -1,5 +1,4 @@
-import { containsKr, formatDateString } from "@/lib/utils";
-import { headers } from "next/headers";
+import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ThreadBottomAction } from "../shared/ThreadBottomAction";
@@ -40,8 +39,8 @@ const ThreadCard = ({
   isComment,
 }: Props) => {
   // const intl = translate("ThreadCard");
-  const headersList = headers();
-  const krRes = containsKr(headersList);
+  // const headersList = headers();
+  // const krRes = containsKr(headersList);
 
   return (
     <article
@@ -123,14 +122,15 @@ const ThreadCard = ({
 
           <Link href={`/thread/${id}`}>
             <p className="mt-1 text-subtle-medium text-gray-1">
-              {krRes ? (
+              {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+              {/* {krRes ? (
                 <>답글 {comments.length}개</>
               ) : (
                 <>
                   {comments.length} repl{comments.length > 1 ? "ies" : "y"}
-                  {/* {t('locale', {locale: cur})} */}
+                
                 </>
-              )}
+              )} */}
             </p>
           </Link>
         </div>

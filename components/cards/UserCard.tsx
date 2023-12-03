@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import translate from "@/messages/en.json";
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 
 interface Props {
   id: string;
@@ -25,6 +26,7 @@ const UserCard = ({
   bio,
 }: Props) => {
   const router = useRouter();
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.UserCard;
 
   const isCommunity = personType === "Community";

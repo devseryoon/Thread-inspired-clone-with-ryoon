@@ -1,6 +1,6 @@
-import { UserButton } from "@clerk/nextjs";
-import translate from "@/messages/en.json";
+import LangContext from "@/lib/context/LangContext";
 import Image from "next/image";
+import { useContext } from "react";
 
 interface Props {
   accountId: string;
@@ -23,6 +23,7 @@ const ProfileHeader = ({
   followers,
   type,
 }: Props) => {
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.ProfileHeader;
   return (
     <div className="flex w-full flex-col justify-start ">

@@ -1,4 +1,5 @@
 import BottomBar from "@/components/shared/BottomBar";
+
 import TopBar from "@/components/shared/TopBar";
 import { Toaster } from "@/components/ui/toaster";
 import { fetchUser } from "@/lib/actions/user.actions";
@@ -8,6 +9,8 @@ import { dark } from "@clerk/themes";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import "../../app/globals.css";
+import { usePreferredLanguage } from "@uidotdev/usehooks";
+import LangProvider from "@/lib/providers/langProvider";
 type Props = {
   children: ReactNode;
 };
@@ -24,8 +27,6 @@ export default async function RootLayout({
   }
   const userInfo = await fetchUser(user.id);
   const modUserId = JSON.stringify(userInfo._id).replace(/\"/gi, "");
-  // console.log("userInfo._id: ", userInfo._id);
-  // console.log("dddd?:", userId2.replace(/\\/g, ""));
   const userInfoForPassing = {
     id: modUserId.replace(/\\/g, ""),
     bio: userInfo.bio,
@@ -47,19 +48,21 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <TopBar />
-            <main className="flex flex-row">
-              <section className="main-container">
-                <div className="w-full max-w-xl">{children}</div>
-              </section>
-            </main>
-            <BottomBar
-              userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
-              // userInfo={userInfo}
-              userInfoForPassing={userInfoForPassing}
-              // krRes={krRes}
-            />
-            <Toaster />
+            <LangProvider>
+              <TopBar />
+              <main className="flex flex-row">
+                <section className="main-container">
+                  <div className="w-full max-w-xl">{children}</div>
+                </section>
+              </main>
+              <BottomBar
+                userId={JSON.stringify(userInfo._id).replace(/\"/gi, "")}
+                // userInfo={userInfo}
+                userInfoForPassing={userInfoForPassing}
+                // krRes={krRes}
+              />
+              <Toaster />
+            </LangProvider>
           </ThemeProvider>
         </body>
       </html>

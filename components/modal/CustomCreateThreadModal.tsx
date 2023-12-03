@@ -1,10 +1,10 @@
 "use client";
 
 import { Edit } from "lucide-react";
-import translate from "@/messages/en.json";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import PostModalThread from "../forms/PostModalThread";
+import LangContext from "@/lib/context/LangContext";
 const CustomCreateThreadModal = ({
   userId,
   userInfoForPassing,
@@ -15,6 +15,7 @@ const CustomCreateThreadModal = ({
   userInfoForPassing: any;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.CustomCreateThreadModal;
 
   // console.log("userInfo::::", userInfo);

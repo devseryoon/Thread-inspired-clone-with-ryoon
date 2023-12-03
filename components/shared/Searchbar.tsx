@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
-import translate from "@/messages/en.json";
+
+import LangContext from "@/lib/context/LangContext";
 
 interface Props {
   routeType: string;
@@ -17,6 +18,7 @@ function Searchbar({ routeType }: Props) {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const { theme } = useTheme();
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.Searchbar;
 
   // query after 0.3s of no input

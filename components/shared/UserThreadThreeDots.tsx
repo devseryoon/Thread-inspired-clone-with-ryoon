@@ -7,12 +7,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { deleteThread } from "@/lib/actions/thread.actions";
-import translate from "@/messages/en.json";
+import LangContext from "@/lib/context/LangContext";
 import { useUser } from "@clerk/nextjs";
 import { Flag, Loader2, MoreHorizontalIcon, Trash, UserX2 } from "lucide-react";
 // import { useToast } from "../ui/use-toast";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
+import { useContext, useEffect, useState, useTransition } from "react";
 // import { deleteThread } from "@/lib/actions";
 interface Props {
   threadId: string;
@@ -39,6 +39,7 @@ const UserThreadThreeDots = ({
 
   const [deleted, setDeleted] = useState(false);
   const [open, setOpen] = useState(false);
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate["UserThreadThreeDots"];
 
   const self = user?.id === authorId;

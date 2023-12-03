@@ -25,7 +25,7 @@ import { useForm } from "react-hook-form";
 import { createThread } from "@/lib/actions/thread.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { useOrganization } from "@clerk/nextjs";
-import translate from "@/messages/en.json";
+
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 interface Props {

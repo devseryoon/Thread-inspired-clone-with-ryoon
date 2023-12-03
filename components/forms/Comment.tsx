@@ -17,9 +17,11 @@ import { useForm } from "react-hook-form";
 
 import { addCommentToThread } from "@/lib/actions/thread.actions";
 import { CommentValidation } from "@/lib/validations/thread";
-import translate from "@/messages/en.json";
+
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 
 interface Props {
   threadId: string;
@@ -30,6 +32,7 @@ interface Props {
 const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.Comment;
   const form = useForm({
     resolver: zodResolver(CommentValidation),

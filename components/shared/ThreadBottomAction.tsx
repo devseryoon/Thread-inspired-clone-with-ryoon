@@ -22,10 +22,10 @@ import {
   Send,
   Share2Icon,
 } from "lucide-react";
-import translate from "@/messages/en.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import LangContext from "@/lib/context/LangContext";
 
 interface Props {
   id: string;
@@ -44,6 +44,7 @@ export const ThreadBottomAction = ({
   const [open, setOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const krRes = containsKrForClient(pathname);
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate["ThreadBottomAction"];
   const { toast } = useToast();
   // console.log("pathname:::::::;", id);

@@ -1,12 +1,13 @@
 "use client"; // useRouter는 온리 client side에 적용됨으로 해당 사항 적시해줘야 함.
 // 이것은 client side rendered component라는 표기임.
-import translate from "@/messages/en.json";
+//
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { GroupIcon, Heart, Home, Search } from "lucide-react";
-import { useEffect } from "react";
 import CustomCreateThreadModal from "../modal/CustomCreateThreadModal";
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 interface Props {
   userId: string;
   krRes: boolean;
@@ -27,7 +28,7 @@ const BottomBar = ({
   userInfoForPassing: any;
 }) => {
   const pathname = usePathname();
-
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.BottomBar;
 
   return (

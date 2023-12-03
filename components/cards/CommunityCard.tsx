@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "../ui/button";
-import translate from "@/messages/en.json";
+//
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 
 interface Props {
   id: string;
@@ -16,6 +18,7 @@ interface Props {
 }
 
 function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.CommunityCard;
   return (
     <article className="community-card">

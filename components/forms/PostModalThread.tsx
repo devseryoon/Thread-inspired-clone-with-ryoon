@@ -17,9 +17,11 @@ import { useForm } from "react-hook-form";
 import { createThread } from "@/lib/actions/thread.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { useOrganization } from "@clerk/nextjs";
-import translate from "@/messages/en.json";
+
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import LangContext from "@/lib/context/LangContext";
 
 const PostModalThread = ({
   userId,
@@ -30,6 +32,7 @@ const PostModalThread = ({
   // krRes: boolean;
   closeModal: () => void;
 }) => {
+  const { langKr, setLangKr, translate }: any = useContext(LangContext);
   const intl = translate.CustomCreateThreadModal;
   const router = useRouter();
   const pathname = usePathname();
