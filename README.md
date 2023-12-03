@@ -5,6 +5,9 @@
 <img width="100%" src="./public/RyoonThread.gif"/>
 
 - 기존의 [Thread clone app](https://threads-ryoon.vercel.app/)에서 추가적으로 기능구현하여 작성한 Thread ver.2 WEB-APP입니다.
+  </br>
+  </br>
+  </br>
 
 ## 추가 적용한 작업 및 기능( 2023.11 기준)
 
