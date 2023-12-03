@@ -75,7 +75,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                 <Input
                   type="text"
                   placeholder={intl.comment}
-                  className="no-focus text-light-1 outline-none"
+                  className="no-focus dark:text-light-1 text-gray-800  outline-none"
                   {...field}
                 />
               </FormControl>
