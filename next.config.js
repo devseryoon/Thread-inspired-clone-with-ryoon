@@ -5,6 +5,9 @@ const nextConfig = {
     serverActions: true,
     serverComponentsExternalPackages: ["mongoose"],
   },
+  api: {
+    responseLimit: false,
+  },
   images: {
     remotePatterns: [
       {
