@@ -13,17 +13,8 @@ interface Props {
   type?: "User" | "Community";
 }
 
-const ProfileHeader = ({
-  accountId,
-  authUserId,
-  name,
-  username,
-  imgUrl,
-  bio,
-  followers,
-  type,
-}: Props) => {
-  const { langKr, setLangKr, translate }: any = useContext(LangContext);
+const ProfileHeader = ({ name, username, imgUrl, bio, followers }: Props) => {
+  const { translate }: any = useContext(LangContext);
   const intl = translate.ProfileHeader;
   return (
     <div className="flex w-full flex-col justify-start ">
